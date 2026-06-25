@@ -202,3 +202,1626 @@
 
     /* =========================================================
        MAIN LAYOUT
+    ========================================================= */
+    .main-wrap {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 32px 16px 80px;
+    }
+
+    /* =========================================================
+       CARD SECTIONS
+    ========================================================= */
+    .card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius);
+      margin-bottom: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow-s);
+    }
+
+    .card-head {
+      background: linear-gradient(135deg, #181033 0%, var(--brand-blue) 100%);
+      padding: 14px 22px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .card-num {
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.1);
+      border: 1.5px solid rgba(255,255,255,.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700; color: var(--brand-yellow);
+      flex-shrink: 0;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: .2px;
+    }
+
+    .card-body { padding: 24px 22px; }
+
+    /* =========================================================
+       FORM ELEMENTS
+    ========================================================= */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+    .col-2  { grid-column: span 2; }
+    .col-3  { grid-column: span 3; }
+
+    .fgroup {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .flabel {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+    .flabel .req { color: var(--brand-red); margin-left: 2px; }
+    .flabel .opt { font-weight: 400; color: var(--text-sub); font-size: 12px; margin-left: 5px; }
+
+    .finput, .fselect, .ftextarea {
+      width: 100%;
+      padding: 9px 13px;
+      border: 1.5px solid var(--border-color);
+      border-radius: 8px;
+      font-family: 'Sarabun', sans-serif;
+      font-size: 14.5px;
+      color: var(--text-main);
+      background: var(--bg-input);
+      transition: border-color .2s, box-shadow .2s;
+      outline: none;
+    }
+    .finput:focus, .fselect:focus, .ftextarea:focus {
+      border-color: var(--brand-yellow);
+      box-shadow: 0 0 0 3px rgba(244, 208, 0, 0.15);
+    }
+    .finput.is-err, .fselect.is-err, .ftextarea.is-err { border-color: var(--brand-red); }
+    .finput.is-ok,  .fselect.is-ok,  .ftextarea.is-ok  { border-color: #00ff80; }
+
+    .ftextarea { resize: vertical; min-height: 130px; }
+    .fhint { font-size: 12px; color: var(--text-sub); }
+
+    .ferr {
+      font-size: 12px;
+      color: #ff5252;
+      display: none;
+    }
+    .ferr.show { display: block; }
+
+    /* Timestamp display */
+    .ts-display {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 10px 14px;
+      background: var(--bg-input);
+      border: 1.5px solid var(--border-color);
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+    .ts-icon { font-size: 18px; }
+
+    /* Divider */
+    .divider {
+      border: none;
+      border-top: 1px dashed var(--border-color);
+      margin: 20px 0;
+    }
+
+    /* Sub-section label */
+    .sub-head {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--brand-yellow);
+      padding-bottom: 10px;
+      border-bottom: 1.5px solid var(--border-color);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Character counter */
+    .char-counter {
+      font-size: 12.5px;
+      color: var(--text-sub);
+      text-align: right;
+      font-weight: 500;
+    }
+    .char-counter.warn   { color: var(--brand-yellow); }
+    .char-counter.over   { color: var(--brand-red); font-weight: 700; }
+    #charCurrentCount    { font-weight: 700; color: #fff; }
+
+    /* =========================================================
+       FILE UPLOAD
+    ========================================================= */
+    .upload-zone {
+      position: relative;
+      border: 2px dashed var(--border-color);
+      border-radius: var(--radius);
+      background: var(--bg-input);
+      padding: 22px 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color .2s, background .2s;
+    }
+    .upload-zone:hover, .upload-zone.drag-over {
+      border-color: var(--brand-yellow);
+      background: rgba(244, 208, 0, 0.04);
+    }
+    .upload-zone input[type="file"] {
+      position: absolute; inset: 0;
+      opacity: 0; cursor: pointer;
+      width: 100%; height: 100%;
+    }
+    .upload-icon { font-size: 32px; margin-bottom: 6px; }
+    .upload-title { font-size: 14px; font-weight: 600; color: var(--text-main); }
+    .upload-hint  { font-size: 12px; color: var(--text-sub); margin-top: 3px; }
+
+    .file-list { margin-top: 10px; display: flex; flex-direction: column; gap: 7px; }
+
+    .file-item {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      background: var(--bg-input);
+      border: 1px solid var(--border-color);
+      border-radius: 7px;
+      padding: 7px 12px;
+      font-size: 13px;
+    }
+    .file-item-icon  { font-size: 18px; flex-shrink: 0; }
+    .file-item-name  { flex: 1; color: var(--text-main); font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .file-item-size  { color: var(--text-sub); font-size: 11.5px; flex-shrink: 0; }
+    .file-item-badge { font-size: 13px; flex-shrink: 0; }
+    .file-item-del   { color: var(--brand-red); cursor: pointer; font-size: 15px; flex-shrink: 0; opacity: .7; transition: opacity .2s; line-height: 1; }
+    .file-item-del:hover { opacity: 1; }
+
+    /* =========================================================
+       RADIO OPTIONS (Delivery)
+    ========================================================= */
+    .radio-list { display: flex; flex-direction: column; gap: 10px; }
+
+    .radio-opt {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      padding: 13px 15px;
+      border: 1.5px solid var(--border-color);
+      border-radius: 9px;
+      cursor: pointer;
+      background: var(--bg-input);
+      transition: border-color .2s, background .2s;
+    }
+    .radio-opt:has(input:checked) {
+      border-color: var(--brand-blue);
+      background: rgba(36, 24, 76, 0.25);
+    }
+    .radio-opt input[type="radio"] {
+      margin-top: 2px;
+      flex-shrink: 0;
+      width: 16px; height: 16px;
+      accent-color: var(--brand-yellow);
+      cursor: pointer;
+    }
+    .radio-opt-title  { font-weight: 700; font-size: 14px; color: #fff; margin-bottom: 3px; }
+    .radio-opt-detail { font-size: 12.5px; color: var(--text-sub); line-height: 1.5; }
+
+    /* Warning text */
+    .warn-text {
+      color: #ff5252;
+      font-size: 13px;
+      font-weight: 700;
+      background: var(--red-bg);
+      border-left: 3px solid var(--brand-red);
+      border-radius: 6px;
+      padding: 10px 14px;
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+
+    /* Info box */
+    .info-box {
+      background: var(--yellow-bg);
+      border-left: 3px solid var(--brand-yellow);
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-size: 13px;
+      color: var(--text-main);
+      margin-bottom: 16px;
+    }
+
+    /* =========================================================
+       BUTTONS
+    ========================================================= */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+      padding: 12px 28px;
+      border-radius: 9px;
+      font-family: 'Sarabun', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .btn:active { transform: scale(.98); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--brand-blue), #38247a);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(36, 24, 76, 0.4);
+    }
+    .btn-primary:hover { box-shadow: 0 6px 20px rgba(36, 24, 76, 0.6); transform: translateY(-1px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text-main);
+      border: 2px solid var(--border-color);
+    }
+    .btn-outline:hover { background: rgba(255,255,255,.05); border-color: var(--text-sub); }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #b09702, var(--brand-yellow));
+      color: #000;
+      box-shadow: 0 4px 14px rgba(244, 208, 0, 0.2);
+    }
+    .btn-gold:hover { box-shadow: 0 6px 20px rgba(244, 208, 0, 0.4); transform: translateY(-1px); }
+
+    .btn-danger { background: var(--brand-red); color: #fff; }
+    .btn-sm { padding: 7px 16px; font-size: 13px; border-radius: 7px; }
+
+    .form-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 32px;
+    }
+
+    /* =========================================================
+       FLOATING ADMIN BUTTON
+    ========================================================= */
+    .admin-float {
+      position: fixed;
+      bottom: 22px; right: 22px;
+      z-index: 200;
+    }
+    .admin-float-btn {
+      background: #1a1a1c;
+      color: var(--text-sub);
+      border: 1px solid var(--border-color);
+      border-radius: 50px;
+      padding: 9px 18px;
+      font-family: 'Sarabun', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: var(--shadow-l);
+      transition: color .2s, background .2s;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .admin-float-btn:hover { color: #fff; background: var(--bg-input); }
+
+    /* =========================================================
+       MODALS
+    ========================================================= */
+    .overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.75);
+      backdrop-filter: blur(4px);
+      z-index: 500;
+      display: flex; align-items: center; justify-content: center;
+      padding: 16px;
+    }
+    .overlay.hidden { display: none; }
+
+    .modal {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      width: 100%;
+      max-width: 460px;
+      box-shadow: var(--shadow-l);
+      overflow: hidden;
+    }
+    .modal-xl {
+      max-width: 960px;
+      max-height: 88vh;
+      overflow-y: auto;
+    }
+
+    .modal-head {
+      background: linear-gradient(135deg, #120b29, var(--brand-blue));
+      color: #fff;
+      padding: 18px 22px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .modal-head-title { font-size: 15px; font-weight: 700; }
+    .modal-close {
+      background: none; border: none;
+      color: rgba(255,255,255,.65);
+      font-size: 20px; cursor: pointer; line-height: 1;
+    }
+    .modal-close:hover { color: var(--brand-red); }
+    .modal-body { padding: 22px; }
+
+    /* Admin error msg */
+    .admin-msg {
+      font-size: 13px;
+      padding: 8px 12px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      display: none;
+    }
+    .admin-msg.err { background: var(--red-bg); color: #ff5252; display: block; }
+
+    /* =========================================================
+       ADMIN TABLE
+    ========================================================= */
+    .tbl-wrap { overflow-x: auto; }
+
+    .admin-tbl {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12.5px;
+    }
+    .admin-tbl th {
+      background: var(--bg-input);
+      padding: 8px 12px;
+      text-align: left;
+      font-weight: 700;
+      color: var(--text-main);
+      white-space: nowrap;
+      border-bottom: 1.5px solid var(--border-color);
+      position: sticky; top: 0;
+    }
+    .admin-tbl td {
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-main);
+      max-width: 180px;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .admin-tbl tr:hover td { background: rgba(255,255,255,0.02); }
+
+    .badge { padding: 2px 9px; border-radius: 12px; font-size: 11.5px; font-weight: 700; }
+    .badge-ok  { background: var(--green-bg); color: #00ff80; }
+    .badge-err { background: var(--red-bg); color: #ff5252; }
+
+    /* =========================================================
+       SUCCESS SCREEN
+    ========================================================= */
+    #successScreen { display: none; }
+    #successScreen.show { display: block; }
+
+    .success-wrap {
+      text-align: center;
+      padding: 60px 20px;
+    }
+    .success-icon  { font-size: 72px; margin-bottom: 18px; }
+    .success-title { font-family: 'Playfair Display', serif; font-size: 2rem; color: #00ff80; margin-bottom: 6px; }
+    .success-sub   { font-size: 1rem; color: var(--text-sub); margin-bottom: 28px; }
+
+    .success-card {
+      background: var(--green-bg);
+      border: 1px solid rgba(0, 122, 62, 0.3);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      max-width: 420px;
+      margin: 0 auto 28px;
+      text-align: left;
+      font-size: 14px;
+    }
+    .success-card-title { font-weight: 700; color: #00ff80; font-size: 15px; margin-bottom: 10px; }
+    .success-row { display: flex; gap: 8px; margin-bottom: 5px; }
+    .success-key { color: var(--text-muted); flex-shrink: 0; }
+    .success-val { font-weight: 600; color: var(--text-main); }
+
+    /* =========================================================
+       COFFEE PROCESS INFO POP-UP (ADDED EFFECT)
+    ========================================================= */
+    .coffee-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+    .coffee-table th, .coffee-table td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-main);
+    }
+    .coffee-table th {
+      background-color: var(--bg-input);
+      color: var(--brand-yellow);
+      font-weight: 700;
+    }
+    .coffee-table tr:hover {
+      background-color: rgba(255,255,255,0.02);
+    }
+    .process-type {
+      font-weight: 700;
+      color: var(--brand-yellow);
+    }
+    .understand-btn {
+      background: linear-gradient(135deg, var(--brand-blue), #38247a);
+      color: white;
+      border: none;
+      padding: 10px 24px;
+      font-size: 14.5px;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s, transform 0.1s;
+      box-shadow: var(--shadow-s);
+    }
+    .understand-btn:hover {
+      box-shadow: 0 4px 12px rgba(36, 24, 76, 0.4);
+    }
+    .understand-btn:active {
+      transform: scale(0.98);
+    }
+    .info-trigger-btn {
+      background: none;
+      border: none;
+      color: var(--brand-yellow);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: underline;
+      margin-left: 8px;
+    }
+    .info-trigger-btn:hover {
+      color: #fff;
+    }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+    @media (max-width: 640px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .col-2, .col-3   { grid-column: span 1; }
+      .form-actions     { flex-direction: column-reverse; }
+      .status-timestamp { display: none; }
+    }
+    @media (max-width: 400px) {
+      .site-header { padding: 36px 16px 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-eyebrow">Official Registration Form 2025</div>
+  <h1 class="header-title">Cup of <em>Excellence</em></h1>
+  <p style="font-family:'Sarabun',sans-serif;font-size:1.5rem;font-weight:700;color:rgba(255,255,255,.85);margin-top:4px;letter-spacing:1px;">THAILAND</p>
+  <div class="header-divider"></div>
+  <p class="header-sub">แบบฟอร์มลงทะเบียนส่งกาแฟเข้าร่วมการประกวด ☕ Coffee Competition Entry Form</p>
+</header>
+
+<div class="status-bar" id="statusBar">
+  <div class="status-pill unchecked" id="statusPill">
+    <span class="status-dot"></span>
+    <span id="statusLabel">Unchecked — ข้อมูลไม่ครบถ้วน</span>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <div class="progress-label" id="progressLabel">0 / 0</div>
+  </div>
+  <div class="status-timestamp" id="statusTs">📅 —</div>
+</div>
+
+<div class="main-wrap">
+
+  <form id="regForm" novalidate>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-num">1</div>
+        <div class="card-title">ข้อมูลส่วนตัวผู้สมัคร — Personal Information</div>
+      </div>
+      <div class="card-body">
+
+        <div class="fgroup" style="margin-bottom:18px">
+          <label class="flabel">📅 วันและเวลาที่ลงทะเบียน <span style="font-weight:400;font-size:12px;color:var(--text-sub)">(บันทึกโดยระบบอัตโนมัติ)</span></label>
+          <div class="ts-display"><span class="ts-icon">🕐</span><span id="tsDisplay">กำลังบันทึก...</span></div>
+          <input type="hidden" id="f_ts" name="regTimestamp" />
+        </div>
+
+        <div class="grid-2">
+          <div class="fgroup">
+            <label class="flabel" for="f_fn_th">ชื่อภาษาไทย <span class="req">*</span></label>
+            <input type="text" id="f_fn_th" class="finput" placeholder="ชื่อ" />
+            <span class="ferr" id="e_fn_th">กรุณากรอกชื่อภาษาไทย</span>
+          </div>
+          <div class="fgroup">
+            <label class="flabel" for="f_ln_th">นามสกุลภาษาไทย <span class="req">*</span></label>
+            <input type="text" id="f_ln_th" class="finput" placeholder="นามสกุล" />
+            <span class="ferr" id="e_ln_th">กรุณากรอกนามสกุลภาษาไทย</span>
+          </div>
+          <div class="fgroup">
+            <label class="flabel" for="f_fn_en">ชื่อภาษาอังกฤษ <span class="req">*</span></label>
+            <input type="text" id="f_fn_en" class="finput" placeholder="First Name" />
+            <span class="ferr" id="e_fn_en">กรุณากรอกชื่อภาษาอังกฤษ</span>
+          </div>
+          <div class="fgroup">
+            <label class="flabel" for="f_ln_en">นามสกุลภาษาอังกฤษ <span class="req">*</span></label>
+            <input type="text" id="f_ln_en" class="finput" placeholder="Last Name" />
+            <span class="ferr" id="e_ln_en">กรุณากรอกนามสกุลภาษาอังกฤษ</span>
+          </div>
+        </div>
+
+        <hr class="divider" />
+
+        <div class="grid-2">
+          <div class="fgroup col-2">
+            <label class="flabel" for="f_nid">หมายเลขบัตรประจำตัวประชาชน <span class="req">*</span></label>
+            <input type="text" id="f_nid" class="finput" placeholder="X-XXXX-XXXXX-XX-X" maxlength="17" />
+            <span class="fhint">กรอกตัวเลข 13 หลัก</span>
+            <span class="ferr" id="e_nid">กรุณากรอกเลขบัตรประชาชน 13 หลักที่ถูกต้อง</span>
+          </div>
+        </div>
+
+        <hr class="divider" />
+
+        <div class="fgroup">
+          <label class="flabel">สำเนาบัตรประจำตัวประชาชน <span class="req">*</span></label>
+          <div class="upload-zone" id="zone_nid">
+            <input type="file" id="f_nid_file" accept="image/*,.pdf" />
+            <div class="upload-icon">📎</div>
+            <div class="upload-title">คลิกหรือลากไฟล์มาวางที่นี่</div>
+            <div class="upload-hint">JPG, PNG, PDF • ไม่เกิน 10 MB</div>
+          </div>
+          <div class="file-list" id="list_nid"></div>
+          <span class="ferr" id="e_nid_file">กรุณาอัปโหลดสำเนาบัตรประจำตัวประชาชน</span>
+        </div>
+
+        <hr class="divider" />
+
+        <div class="grid-2">
+          <div class="fgroup">
+            <label class="flabel" for="f_phone">เบอร์ติดต่อ <span class="req">*</span></label>
+            <input type="tel" id="f_phone" class="finput" placeholder="0XX-XXX-XXXX" />
+            <span class="ferr" id="e_phone">กรุณากรอกเบอร์ติดต่อ</span>
+          </div>
+          <div class="fgroup">
+            <label class="flabel" for="f_line">ไอดีไลน์ (Line ID) <span class="req">*</span></label>
+            <input type="text" id="f_line" class="finput" placeholder="@LineID" />
+            <span class="ferr" id="e_line">กรุณากรอกไอดีไลน์</span>
+          </div>
+          <div class="fgroup col-2">
+            <label class="flabel" for="f_email">อีเมล <span class="req">*</span></label>
+            <input type="email" id="f_email" class="finput" placeholder="example@email.com" />
+            <span class="ferr" id="e_email">กรุณากรอกอีเมลที่ถูกต้อง</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-num">2</div>
+        <div class="card-title">ข้อมูลการประกวด — Competition Details</div>
+      </div>
+      <div class="card-body">
+
+        <div class="grid-2">
+          <div class="fgroup">
+            <label class="flabel" for="f_occ">อาชีพหลัก <span class="req">*</span></label>
+            <select id="f_occ" class="fselect">
+              <option value="">— กรุณาเลือก —</option>
+              <option value="นักแปรรูป (Processor)">นักแปรรูป (Processor)</option>
+              <option value="เกษตรกร (Farmer)">เกษตรกร (Farmer)</option>
+              <option value="วิสาหกิจชุมชน (Community Enterprise)">วิสาหกิจชุมชน (Community Enterprise)</option>
+            </select>
+            <span class="ferr" id="e_occ">กรุณาเลือกอาชีพหลัก</span>
+          </div>
+          <div class="fgroup">
+            <label class="flabel" for="f_amt">จำนวนกะลากาแฟที่ส่งเข้าประกวด <span class="req">*</span></label>
+            <input type="number" id="f_amt" class="finput" placeholder="ระบุจำนวน" min="1" />
+            <span class="ferr" id="e_amt">กรุณาระบุจำนวนกะลากาแฟ</span>
+          </div>
+        </div>
+
+        <hr class="divider" />
+
+        <div class="grid-2">
+          <div class="fgroup">
+            <label class="flabel" for="f_prev">เคยเข้าร่วมการประกวด Cup of Excellence มาก่อนหรือไม่ <span class="req">*</span></label>
+            <select id="f_prev" class="fselect" onchange="togglePrevYear()">
+              <option value="">— กรุณาเลือก —</option>
+              <option value="เคย">เคย</option>
+              <option value="ไม่เคย">ไม่เคย</option>
+            </select>
+            <span class="ferr" id="e_prev">กรุณาเลือก</span>
+          </div>
+          <div class="fgroup" id="grp_prevYear" style="display:none">
+            <label class="flabel" for="f_prevYear">ระบุปีที่เคยเข้าร่วมการประกวด <span class="req">*</span></label>
+            <input type="text" id="f_prevYear" class="finput" placeholder="เช่น 2023, 2024 หรือ 2566, 2567" />
+            <span class="fhint">ระบุปี ค.ศ. หรือ พ.ศ. หากเคยเข้าร่วมหลายปีให้ระบุทุกปี</span>
+            <span class="ferr" id="e_prevYear">กรุณาระบุปีที่เคยเข้าร่วม</span>
+          </div>
+        </div>
+
+        <hr class="divider" />
+
+        <div class="grid-2">
+          <div class="fgroup">
+            <label class="flabel" for="f_variety">พันธุ์ (Variety) <span class="req">*</span></label>
+            <select id="f_variety" class="fselect" onchange="toggleVarietyCustom()">
+              <option value="">— กรุณาเลือก —</option>
+              <option value="Bourbon">Bourbon</option>
+              <option value="Catimor">Catimor</option>
+              <option value="Catuai">Catuai</option>
+              <option value="Caturra">Caturra</option>
+              <option value="Gesha">Gesha</option>
+              <option value="Java">Java</option>
+              <option value="Typica">Typica</option>
+              <option value="Mixed">Mixed (กรุณาระบุ)</option>
+              <option value="Other">Other (กรุณาระบุ)</option>
+            </select>
+            <span class="ferr" id="e_variety">กรุณาเลือกพันธุ์กาแฟ</span>
+          </div>
+          <div class="fgroup">
+            <label class="flabel" for="f_process">กระบวนการแปรรูป (Process) <span class="req">*</span> <button type="button" class="info-trigger-btn" onclick="openCoffeeModal()">ดูคำอธิบาย</button></label>
+            <select id="f_process" class="fselect">
+              <option value="">— กรุณาเลือก —</option>
+              <option value="Washed (Traditional)">Washed (Traditional)</option>
+              <option value="Honey (Traditional)">Honey (Traditional)</option>
+              <option value="Dry/Natural (Traditional)">Dry/Natural (Traditional)</option>
+              <option value="Washed (Experimental)">Washed (Experimental)</option>
+              <option value="Honey (Experimental)">Honey (Experimental)</option>
+              <option value="Dry/Natural (Experimental)">Dry/Natural (Experimental)</option>
+            </select>
+            <span class="ferr" id="e_process">กรุณาเลือกกระบวนการแปรรูป</span>
+          </div>
+        </div>
+
+        <div id="grp_varietyCustom" style="display:none; margin-top:14px">
+          <div class="fgroup">
+            <label class="flabel" for="f_varietyCustom">กรุณาระบุพันธุ์กาแฟ <span class="req">*</span></label>
+            <input type="text" id="f_varietyCustom" class="finput" placeholder="ระบุชื่อพันธุ์กาแฟ" />
+            <span class="ferr" id="e_varietyCustom">กรุณาระบุพันธุ์กาแฟ</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-num">3</div>
+        <div class="card-title">ข้อมูลฟาร์มและที่ตั้ง — Farm Information</div>
+      </div>
+      <div class="card-body">
+
+        <div class="grid-2">
+          <div class="fgroup">
+            <label class="flabel" for="f_farm_th">ชื่อฟาร์มภาษาไทย <span class="req">*</span></label>
+            <input type="text" id="f_farm_th" class="finput" placeholder="ชื่อฟาร์ม" />
+            <span class="ferr" id="e_farm_th">กรุณากรอกชื่อฟาร์มภาษาไทย</span>
+          </div>
+          <div class="fgroup">
+            <label class="flabel" for="f_farm_en">ชื่อฟาร์มภาษาอังกฤษ <span class="req">*</span></label>
+            <input type="text" id="f_farm_en" class="finput" placeholder="Farm Name" />
+            <span class="ferr" id="e_farm_en">กรุณากรอกชื่อฟาร์มภาษาอังกฤษ</span>
+          </div>
+        </div>
+
+        <hr class="divider" />
+        <div class="sub-head">📍 ที่อยู่ฟาร์ม</div>
+
+        <div class="grid-3">
+          <div class="fgroup">
+            <label class="flabel" for="f_no">เลขที่ <span class="req">*</span></label>
+            <input type="text" id="f_no" class="finput" placeholder="เลขที่" />
+            <span class="ferr" id="e_no">กรุณากรอกเลขที่</span>
+          </div>
+          <div class="fgroup">
+            <label class="flabel" for="f_moo">หมู่ <span class="opt">(ถ้ามี)</span></label>
+            <input type="text" id="f_moo" class="finput" placeholder="หมู่ที่" />
+          </div>
+          <div class="fgroup">
+            <label class="flabel" for="f_road">ถนน <span class="opt">(ถ้ามี)</span></label>
+            <input type="text" id="f_road" class="finput" placeholder="ถนน" />
+          </div>
+          <div class="fgroup">
+            <label class="flabel" for="f_sub">ตำบล <span class="req">*</span></label>
+            <input type="text" id="f_sub" class="finput" placeholder="ตำบล" />
+            <span class="ferr" id="e_sub">กรุณากรอกตำบล</span>
+          </div>
+          <div class="fgroup">
+            <label class="flabel" for="f_dist">อำเภอ <span class="req">*</span></label>
+            <input type="text" id="f_dist" class="finput" placeholder="อำเภอ" />
+            <span class="ferr" id="e_dist">กรุณากรอกอำเภอ</span>
+          </div>
+          <div class="fgroup">
+            <label class="flabel" for="f_prov">จังหวัด <span class="req">*</span></label>
+            <input type="text" id="f_prov" class="finput" placeholder="จังหวัด" />
+            <span class="ferr" id="e_prov">กรุณากรอกจังหวัด</span>
+          </div>
+          <div class="fgroup">
+            <label class="flabel" for="f_post">รหัสไปรษณีย์ <span class="req">*</span></label>
+            <input type="text" id="f_post" class="finput" placeholder="XXXXX" maxlength="5" />
+            <span class="ferr" id="e_post">กรุณากรอกรหัสไปรษณีย์</span>
+          </div>
+          <div class="fgroup">
+            <label class="flabel" for="f_masl">ความสูงจากระดับน้ำทะเล (MASL) <span class="req">*</span></label>
+            <input type="number" id="f_masl" class="finput" placeholder="เช่น 1200" min="0" />
+            <span class="ferr" id="e_masl">กรุณาระบุความสูง MASL</span>
+          </div>
+          <div class="fgroup">
+            <label class="flabel" for="f_size">ขนาดพื้นที่ฟาร์ม (ไร่) <span class="req">*</span></label>
+            <input type="number" id="f_size" class="finput" placeholder="เช่น 5" min="0" step="0.1" />
+            <span class="ferr" id="e_size">กรุณาระบุขนาดฟาร์ม</span>
+          </div>
+        </div>
+
+        <hr class="divider" />
+
+        <div class="fgroup">
+          <label class="flabel" for="f_hist">
+            ประวัติความเป็นมา หรือความน่าสนใจของฟาร์ม <span class="req">*</span>
+          </label>
+          <textarea id="f_hist" class="ftextarea"
+            placeholder="เล่าเรื่องราว of ฟาร์ม ประวัติความเป็นมา จุดเด่น หรือความน่าสนใจที่ต้องการให้คณะกรรมการรับทราบ..."
+            maxlength="1300"
+            oninput="countChars(this)"></textarea>
+          <div class="char-counter" id="charCounter">
+            <span id="charCurrentCount">0</span>/1,300
+          </div>
+          <span class="ferr" id="e_hist">กรุณากรอกประวัติฟาร์ม</span>
+        </div>
+
+        <hr class="divider" />
+
+        <div class="fgroup">
+          <label class="flabel">
+            ภาพฟาร์ม <span class="req">*</span>
+            <span class="opt">สูงสุด 3 ภาพ • ความละเอียดสูง คมชัด • ไม่เกิน 10 MB ต่อภาพ • ต้องมีภาพที่เห็นหน้าเกษตรกรชัดเจน</span>
+          </label>
+          <div class="upload-zone" id="zone_farm">
+            <input type="file" id="f_farm_photos" accept="image/*" multiple />
+            <div class="upload-icon">📷</div>
+            <div class="upload-title">คลิกหรือลากรูปมาวางที่นี่</div>
+            <div class="upload-hint">JPG, PNG • สูงสุด 3 ภาพ • ไม่เกิน 10 MB ต่อภาพ</div>
+          </div>
+          <div class="file-list" id="list_farm"></div>
+          <span class="ferr" id="e_farm_photos">กรุณาอัปโหลดภาพฟาร์มอย่างน้อย 1 ภาพ (สูงสุด 3 ภาพ)</span>
+        </div>
+
+        <hr class="divider" />
+
+        <div class="fgroup">
+          <label class="flabel">
+            ใบจดทะเบียน หรือ รับรองฟาร์ม
+            <span class="opt">(ถ้ามี)</span>
+          </label>
+          <div class="upload-zone" id="zone_cert">
+            <input type="file" id="f_cert" accept="image/*,.pdf" />
+            <div class="upload-icon">📜</div>
+            <div class="upload-title">คลิกหรือลากไฟล์มาวางที่นี่</div>
+            <div class="upload-hint">JPG, PNG, PDF • ไม่เกิน 10 MB</div>
+          </div>
+          <div class="file-list" id="list_cert"></div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-num">4</div>
+        <div class="card-title">วิธีการส่งและรับคืนกาแฟ — Coffee Submission &amp; Return</div>
+      </div>
+      <div class="card-body">
+
+        <div class="fgroup" style="margin-bottom:20px">
+          <label class="flabel" style="margin-bottom:8px">วิธีการส่งกาแฟเข้ากองประกวด <span class="req">*</span></label>
+          <div class="radio-list">
+            <label class="radio-opt">
+              <input type="radio" name="deliveryMethod" value="ส่งด้วยตัวเอง" onchange="syncStatus()" />
+              <div>
+                <div class="radio-opt-title">🚶 ส่งด้วยตัวเอง</div>
+                <div class="radio-opt-detail">ภายในเวลา 15.00 น. ติดต่อที่ คุณแจ้ นงค์เยาว์ พิมพ์นวล<br />📞 089-756-1360</div>
+              </div>
+            </label>
+            <label class="radio-opt">
+              <input type="radio" name="deliveryMethod" value="ส่งผ่านขนส่ง" onchange="syncStatus()" />
+              <div>
+                <div class="radio-opt-title">🚚 ส่งผ่านขนส่ง</div>
+                <div class="radio-opt-detail">
+                  บริษัท เค.วี.เอ็น.อิมปอร์ตเอกซ์ปอร์ต (1991) จำกัด<br />
+                  K.V.N. IMPORT EXPORT (1991) COMPANY LIMITED<br />
+                  เลขที่ 286 หมู่ที่ 2 ต.สันผักหวาน อ.หางดง จ.เชียงใหม่ 50230<br />
+                  📞 089-756-1360
+                </div>
+              </div>
+            </label>
+          </div>
+          <span class="ferr" id="e_del">กรุณาเลือกวิธีการส่งกาแฟ</span>
+        </div>
+
+        <hr class="divider" />
+
+        <div class="fgroup">
+          <label class="flabel" style="margin-bottom:8px">วิธีการรับกาแฟคืน <span class="req">*</span></label>
+          <div class="radio-list">
+            <label class="radio-opt">
+              <input type="radio" name="returnMethod" value="รับเองที่บริษัท" onchange="toggleReturnAddr()" />
+              <div>
+                <div class="radio-opt-title">🏢 รับเองที่บริษัท</div>
+                <div class="radio-opt-detail">
+                  บริษัท เค.วี.เอ็น.อิมปอร์ตเอกซ์ปอร์ต (1991) จำกัด<br />
+                  K.V.N. IMPORT EXPORT (1991) COMPANY LIMITED<br />
+                  เลขที่ 286 หมู่ที่ 2 ต.สันผักหวาน อ.หางดง จ.เชียงใหม่ 50230<br />
+                  ติดต่อที่ คุณแจ้ 📞 089-756-1360
+                </div>
+              </div>
+            </label>
+            <label class="radio-opt">
+              <input type="radio" name="returnMethod" value="ส่งคืน" onchange="toggleReturnAddr()" />
+              <div>
+                <div class="radio-opt-title">📦 ส่งคืน (กรุณาระบุที่อยู่)</div>
+              </div>
+            </label>
+          </div>
+          <span class="ferr" id="e_ret">กรุณาเลือกวิธีการรับกาแฟคืน</span>
+        </div>
+
+        <div id="grp_retAddr" style="display:none; margin-top:14px">
+          <div class="fgroup">
+            <label class="flabel" for="f_retAddr">ที่อยู่สำหรับส่งคืนกาแฟ <span class="req">*</span></label>
+            <textarea id="f_retAddr" class="ftextarea" placeholder="กรอกที่อยู่สำหรับส่งคืน..." style="min-height:80px"></textarea>
+            <div class="warn-text">⚠️ ที่อยู่จะต้องเป็นที่อยู่ที่บริการขนส่งสามารถเดินทางส่งถึงได้เท่านั้น</div>
+            <span class="ferr" id="e_retAddr">กรุณากรอกที่อยู่สำหรับส่งคืน</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" class="btn btn-outline" onclick="clearForm()">🔄 ล้างข้อมูล</button>
+      <button type="submit" class="btn btn-primary">☕ ยืนยันการสมัคร</button>
+    </div>
+
+  </form>
+
+  <div id="successScreen">
+    <div class="success-wrap">
+      <div class="success-icon">☕</div>
+      <h2 class="success-title">ลงทะเบียนสำเร็จ!</h2>
+      <p class="success-sub">ขอบคุณที่สมัครเข้าร่วมการประกวด Cup of Excellence Thailand</p>
+      <div class="success-card" id="successDetail"></div>
+      <button class="btn btn-primary" onclick="newEntry()">➕ ลงทะเบียนรายการใหม่</button>
+    </div>
+  </div>
+
+</div><div class="admin-float" id="adminFloat">
+  <button class="admin-float-btn" onclick="openAdminLogin()">🔐 Admin</button>
+</div>
+
+<div class="overlay hidden" id="modalLogin">
+  <div class="modal">
+    <div class="modal-head">
+      <span class="modal-head-title">🔐 Admin Access — ผู้ดูแลระบบ</span>
+      <button class="modal-close" onclick="closeModal('modalLogin')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="admin-msg" id="loginMsg"></div>
+      <div class="fgroup" style="margin-bottom:16px">
+        <label class="flabel">รหัสผ่านผู้ดูแลระบบ</label>
+        <input type="password" id="adminPwd" class="finput" placeholder="กรอกรหัสผ่าน"
+          onkeypress="if(event.key==='Enter') doLogin()" />
+      </div>
+      <div style="display:flex;gap:10px;justify-content:flex-end">
+        <button class="btn btn-outline btn-sm" onclick="closeModal('modalLogin')">ยกเลิก</button>
+        <button class="btn btn-primary btn-sm" onclick="doLogin()">เข้าสู่ระบบ</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="overlay hidden" id="modalAdmin">
+  <div class="modal modal-xl">
+    <div class="modal-head">
+      <span class="modal-head-title">🗂️ ข้อมูลการลงทะเบียนทั้งหมด — All Registrations</span>
+      <button class="modal-close" onclick="closeModal('modalAdmin')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px">
+        <div>
+          <span style="font-weight:700;font-size:1rem;color:#fff">รายการทั้งหมด</span>
+          <span style="font-size:13px;color:var(--text-sub);margin-left:8px" id="regCount">0 รายการ</span>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-gold btn-sm" onclick="exportCSV()">📥 Export CSV</button>
+          <button class="btn btn-danger btn-sm" onclick="purgeAll()">🗑️ ลบทั้งหมด</button>
+        </div>
+      </div>
+      <div class="tbl-wrap">
+        <table class="admin-tbl" id="adminTbl">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>วันที่</th>
+              <th>ชื่อ-นามสกุล</th>
+              <th>เบอร์</th>
+              <th>อีเมล</th>
+              <th>ฟาร์ม</th>
+              <th>อาชีพ</th>
+              <th>พันธุ์</th>
+              <th>กระบวนการ</th>
+              <th>MASL</th>
+              <th>สถานะ</th>
+              <th>จัดการ</th>
+            </tr>
+          </thead>
+          <tbody id="adminTbody">
+            <tr><td colspan="12" style="text-align:center;padding:24px;color:var(--text-sub)">ยังไม่มีข้อมูลการลงทะเบียน</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="overlay hidden" id="coffeeProcessModal">
+  <div class="modal modal-xl" style="max-width: 680px;">
+    <div class="modal-head">
+      <span class="modal-head-title">☕ ข้อมูลกระบวนการแปรรูปกาแฟ (Coffee Processing)</span>
+      <button class="modal-close" onclick="closeModal('coffeeProcessModal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <table class="coffee-table">
+        <thead>
+          <tr>
+            <th style="width: 40%;">ประเภทการแปรรูป</th>
+            <th style="width: 60%;">คำอธิบาย</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="process-type">Washed (Traditional)</td>
+            <td>การแปรรูป Washed แบบดั้งเดิม</td>
+          </tr>
+          <tr>
+            <td class="process-type">Washed (Experimental)</td>
+            <td>การแปรรูป Washed แบบใช้ยีสต์</td>
+          </tr>
+          <tr>
+            <td class="process-type">Honey (Traditional)</td>
+            <td>การแปรรูป Honey แบบดั้งเดิม</td>
+          </tr>
+          <tr>
+            <td class="process-type">Honey (Experimental)</td>
+            <td>การแปรรูป Honey แบบใช้ยีสต์</td>
+          </tr>
+          <tr>
+            <td class="process-type">Dry/Natural (Traditional)</td>
+            <td>การแปรรูป Dry/Natural แบบดั้งเดิม</td>
+          </tr>
+          <tr>
+            <td class="process-type">Dry/Natural (Experimental)</td>
+            <td>การแปรรูป Dry/Natural แบบใช้ยีสต์</td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="text-align: right; margin-top: 24px;">
+        <button type="button" class="understand-btn" onclick="closeModal('coffeeProcessModal')">Understand</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   ADMIN_HASH ได้รับการแก้ไขเป็นรหัสผ่านใหม่: @041294Atom
+   ============================================================ */
+const ADMIN_HASH   = 'QDA0MTI5NEF0b20='; 
+const STORE_KEY    = 'coe_th_regs';
+const MAX_MB       = 10;
+const MAX_FARM_IMG = 3;
+
+/* ---- Runtime state ---- */
+let files_nid  = [];   // ID card
+let files_farm = [];   // Farm photos (max 3)
+let files_cert = [];   // Farm certificate
+
+/* ============================================================
+   INIT
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  stampTime();
+  setupDragDrop('zone_nid',  'f_nid_file',    1,            files_nid,  'list_nid');
+  setupDragDrop('zone_farm', 'f_farm_photos', MAX_FARM_IMG, files_farm, 'list_farm');
+  setupDragDrop('zone_cert', 'f_cert',         1,            files_cert, 'list_cert');
+  setupNidFormatter();
+  document.getElementById('regForm').addEventListener('input',  syncStatus);
+  document.getElementById('regForm').addEventListener('change', syncStatus);
+  syncStatus();
+  
+  // สั่งให้โหลดหน้าเว็บเสร็จแล้วเด้งแสดงข้อมูลกระบวนการแปรรูปทันที
+  openCoffeeModal();
+});
+
+/* ============================================================
+   COFFEE MODAL TRIGGERS
+   ============================================================ */
+function openCoffeeModal() {
+  openModal('coffeeProcessModal');
+}
+
+/* ============================================================
+   TIMESTAMP
+   ============================================================ */
+function stampTime() {
+  const now  = new Date();
+  const iso  = now.toISOString();
+  const thai = now.toLocaleString('th-TH', {
+    year:'numeric', month:'long', day:'numeric',
+    hour:'2-digit', minute:'2-digit', second:'2-digit',
+    timeZone:'Asia/Bangkok', timeZoneName:'short'
+  });
+  document.getElementById('f_ts').value   = iso;
+  document.getElementById('tsDisplay').textContent = thai;
+  document.getElementById('statusTs').textContent  =
+    '📅 ' + now.toLocaleDateString('th-TH', {day:'2-digit',month:'2-digit',year:'numeric',timeZone:'Asia/Bangkok'})
+    + ' ' + now.toLocaleTimeString('th-TH', {hour:'2-digit',minute:'2-digit',timeZone:'Asia/Bangkok'});
+}
+
+/* ============================================================
+   CHARACTER COUNTER
+   ============================================================ */
+function countChars(el) {
+  const cur  = el.value.length;
+  const max  = 1300;
+  const cEl  = document.getElementById('charCurrentCount');
+  const wrap = document.getElementById('charCounter');
+  cEl.textContent = cur.toLocaleString();
+  if (cur >= max)         { wrap.className = 'char-counter over';  el.value = el.value.slice(0, max); cEl.textContent = max.toLocaleString(); }
+  else if (cur >= max*.9) { wrap.className = 'char-counter warn'; }
+  else                    { wrap.className = 'char-counter'; }
+  syncStatus();
+}
+
+/* ============================================================
+   CONDITIONAL FIELDS
+   ============================================================ */
+function togglePrevYear() {
+  const shown = document.getElementById('f_prev').value === 'เคย';
+  const g = document.getElementById('grp_prevYear');
+  g.style.display = shown ? 'flex' : 'none';
+  g.style.flexDirection = 'column';
+  g.style.gap = '5px';
+  document.getElementById('f_prevYear').required = shown;
+  if (!shown) document.getElementById('f_prevYear').value = '';
+  syncStatus();
+}
+
+function toggleVarietyCustom() {
+  const v = document.getElementById('f_variety').value;
+  const shown = v === 'Mixed' || v === 'Other';
+  document.getElementById('grp_varietyCustom').style.display = shown ? 'block' : 'none';
+  document.getElementById('f_varietyCustom').required = shown;
+  if (!shown) document.getElementById('f_varietyCustom').value = '';
+  syncStatus();
+}
+
+function toggleReturnAddr() {
+  const v = document.querySelector('input[name="returnMethod"]:checked')?.value;
+  const shown = v === 'ส่งคืน';
+  document.getElementById('grp_retAddr').style.display = shown ? 'block' : 'none';
+  document.getElementById('f_retAddr').required = shown;
+  syncStatus();
+}
+
+/* ============================================================
+   NATIONAL ID FORMATTER (X-XXXX-XXXXX-XX-X)
+   ============================================================ */
+function setupNidFormatter() {
+  document.getElementById('f_nid').addEventListener('input', e => {
+    let raw = e.target.value.replace(/\D/g, '').slice(0, 13);
+    let fmt = '';
+    if (raw.length > 0)  fmt  = raw.slice(0, 1);
+    if (raw.length > 1)  fmt += '-' + raw.slice(1, 5);
+    if (raw.length > 5)  fmt += '-' + raw.slice(5, 10);
+    if (raw.length > 10) fmt += '-' + raw.slice(10, 12);
+    if (raw.length > 12) fmt += '-' + raw.slice(12, 13);
+    e.target.value = fmt;
+  });
+}
+
+/* ============================================================
+   FILE UPLOAD
+   ============================================================ */
+function setupDragDrop(zoneId, inputId, maxFiles, store, listId) {
+  const zone  = document.getElementById(zoneId);
+  const input = document.getElementById(inputId);
+
+  zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
+  zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+  zone.addEventListener('drop', e => {
+    e.preventDefault();
+    zone.classList.remove('drag-over');
+    ingestFiles(e.dataTransfer.files, maxFiles, store, listId, inputId);
+  });
+  input.addEventListener('change', e => {
+    ingestFiles(e.target.files, maxFiles, store, listId, inputId);
+    e.target.value = ''; // reset so same file can be re-added after removal
+  });
+}
+
+function ingestFiles(fileList, maxFiles, store, listId, inputId) {
+  const errs = [];
+  Array.from(fileList).forEach(f => {
+    if (store.length >= maxFiles) { errs.push(`อนุญาตสูงสุด ${maxFiles} ไฟล์`); return; }
+    if (f.size > MAX_MB * 1024 * 1024) { errs.push(`"${f.name}" เกิน ${MAX_MB} MB`); return; }
+    store.push(f);
+  });
+  renderFiles(store, listId, inputId);
+  if (errs.length) alert('⚠️ ' + errs.join('\n'));
+  syncStatus();
+}
+
+function renderFiles(store, listId, inputId) {
+  const el = document.getElementById(listId);
+  el.innerHTML = '';
+  store.forEach((f, i) => {
+    const mb  = (f.size / 1048576).toFixed(2);
+    const ok  = f.size <= MAX_MB * 1048576;
+    const ico = f.type.startsWith('image/') ? '🖼️' : f.name.endsWith('.pdf') ? '📄' : '📎';
+    const row = document.createElement('div');
+    row.className = 'file-item';
+    row.innerHTML = `
+      <span class="file-item-icon">${ico}</span>
+      <span class="file-item-name" title="${f.name}">${f.name}</span>
+      <span class="file-item-size">${mb} MB</span>
+      <span class="file-item-badge">${ok ? '✅' : '⚠️'}</span>
+      <span class="file-item-del" onclick="removeFile('${listId}','${inputId}',${i})">✕</span>
+    `;
+    el.appendChild(row);
+  });
+}
+
+function removeFile(listId, inputId, idx) {
+  if (listId === 'list_nid')  { files_nid.splice(idx, 1);  renderFiles(files_nid,  'list_nid',  'f_nid_file'); }
+  if (listId === 'list_farm') { files_farm.splice(idx, 1); renderFiles(files_farm, 'list_farm', 'f_farm_photos'); }
+  if (listId === 'list_cert') { files_cert.splice(idx, 1); renderFiles(files_cert, 'list_cert', 'f_cert'); }
+  syncStatus();
+}
+
+/* ============================================================
+   VALIDATORS
+   ============================================================ */
+function valNid(v) {
+  const s = v.replace(/\D/g, '');
+  return s.length === 13;
+}
+function valEmail(v) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+}
+function getVal(id) {
+  return (document.getElementById(id)?.value || '').trim();
+}
+
+/* ============================================================
+   PROGRESS & STATUS SYNC
+   ============================================================ */
+function syncStatus() {
+  const checks = [
+    getVal('f_fn_th'), getVal('f_ln_th'), getVal('f_fn_en'), getVal('f_ln_en'),
+    valNid(getVal('f_nid')) ? '1' : '',
+    files_nid.length ? '1' : '',
+    getVal('f_phone'), getVal('f_line'),
+    valEmail(getVal('f_email')) ? '1' : '',
+    getVal('f_occ'), getVal('f_amt'), getVal('f_prev'),
+    getVal('f_variety'), getVal('f_process'),
+    getVal('f_farm_th'), getVal('f_farm_en'),
+    getVal('f_no'), getVal('f_sub'), getVal('f_dist'), getVal('f_prov'), getVal('f_post'),
+    getVal('f_masl'), getVal('f_size'), getVal('f_hist'),
+    files_farm.length ? '1' : '',
+    document.querySelector('input[name="deliveryMethod"]:checked') ? '1' : '',
+    document.querySelector('input[name="returnMethod"]:checked')   ? '1' : '',
+  ];
+
+  // Conditional
+  if (document.getElementById('f_prev').value === 'เคย') checks.push(getVal('f_prevYear'));
+  const vv = document.getElementById('f_variety').value;
+  if (vv === 'Mixed' || vv === 'Other') checks.push(getVal('f_varietyCustom'));
+  if (document.querySelector('input[name="returnMethod"]:checked')?.value === 'ส่งคืน')
+    checks.push(getVal('f_retAddr'));
+
+  const total  = checks.length;
+  const filled = checks.filter(Boolean).length;
+  const pct    = total ? Math.round((filled / total) * 100) : 0;
+  const done   = filled === total;
+
+  document.getElementById('progressFill').style.width  = pct + '%';
+  document.getElementById('progressLabel').textContent = `${filled} / ${total} ช่อง`;
+
+  const pill  = document.getElementById('statusPill');
+  const label = document.getElementById('statusLabel');
+  pill.className = 'status-pill ' + (done ? 'checked' : 'unchecked');
+  label.textContent = done
+    ? '✅ Checked — ข้อมูลครบถ้วน'
+    : `❌ Unchecked — ยังขาดอีก ${total - filled} ช่อง`;
+}
+
+/* ============================================================
+   FULL VALIDATION (on submit)
+   ============================================================ */
+function fullValidate() {
+  let ok = true;
+  const errs = [];
+
+  // Clear all
+  document.querySelectorAll('.ferr').forEach(e => e.classList.remove('show'));
+  document.querySelectorAll('.finput,.fselect,.ftextarea').forEach(e => e.classList.remove('is-err','is-ok'));
+
+  function chk(id, errId, validFn, label) {
+    const el  = document.getElementById(id);
+    const err = document.getElementById(errId);
+    if (!el || el.closest('[style*="display: none"]') || el.closest('[style*="display:none"]')) return;
+    const v   = (el.value || '').trim();
+    const res = validFn ? validFn(v) : v.length > 0;
+    if (!res) {
+      el.classList.add('is-err');
+      if (err) err.classList.add('show');
+      errs.push(label);
+      ok = false;
+    } else {
+      el.classList.add('is-ok');
+    }
+  }
+
+  // Personal
+  chk('f_fn_th',  'e_fn_th',  null,       'ชื่อภาษาไทย');
+  chk('f_ln_th',  'e_ln_th',  null,       'นามสกุลภาษาไทย');
+  chk('f_fn_en',  'e_fn_en',  null,       'ชื่อภาษาอังกฤษ');
+  chk('f_ln_en',  'e_ln_en',  null,       'นามสกุลภาษาอังกฤษ');
+  chk('f_nid',    'e_nid',    valNid,     'เลขบัตรประชาชน');
+  chk('f_phone',  'e_phone',  null,       'เบอร์ติดต่อ');
+  chk('f_line',   'e_line',   null,       'ไอดีไลน์');
+  chk('f_email',  'e_email',  valEmail,   'อีเมล');
+
+  if (!files_nid.length) {
+    document.getElementById('e_nid_file').classList.add('show');
+    errs.push('สำเนาบัตรประชาชน'); ok = false;
+  }
+
+  // Competition
+  chk('f_occ',     'e_occ',     null, 'อาชีพหลัก');
+  chk('f_amt',     'e_amt',     null, 'จำนวนกะลา');
+  chk('f_prev',    'e_prev',    null, 'ประสบการณ์ CoE');
+  chk('f_variety', 'e_variety', null, 'พันธุ์กาแฟ');
+  chk('f_process', 'e_process', null, 'กระบวนการแปรรูป');
+
+  if (document.getElementById('f_prev').value === 'เคย')
+    chk('f_prevYear', 'e_prevYear', null, 'ปีที่เคยร่วม');
+  const vv = document.getElementById('f_variety').value;
+  if (vv === 'Mixed' || vv === 'Other')
+    chk('f_varietyCustom', 'e_varietyCustom', null, 'ชื่อพันธุ์');
+
+  // Farm
+  chk('f_farm_th', 'e_farm_th', null, 'ชื่อฟาร์มไทย');
+  chk('f_farm_en', 'e_farm_en', null, 'ชื่อฟาร์มอังกฤษ');
+  chk('f_no',   'e_no',   null, 'เลขที่');
+  chk('f_sub',  'e_sub',  null, 'ตำบล');
+  chk('f_dist', 'e_dist', null, 'อำเภอ');
+  chk('f_prov', 'e_prov', null, 'จังหวัด');
+  chk('f_post', 'e_post', null, 'รหัสไปรษณีย์');
+  chk('f_masl', 'e_masl', null, 'MASL');
+  chk('f_size', 'e_size', null, 'ขนาดฟาร์ม');
+  chk('f_hist', 'e_hist', null, 'ประวัติฟาร์ม');
+
+  if (!files_farm.length) {
+    document.getElementById('e_farm_photos').classList.add('show');
+    errs.push('ภาพฟาร์ม'); ok = false;
+  }
+
+  // Delivery
+  if (!document.querySelector('input[name="deliveryMethod"]:checked')) {
+    document.getElementById('e_del').classList.add('show');
+    errs.push('วิธีส่งกาแฟ'); ok = false;
+  }
+  if (!document.querySelector('input[name="returnMethod"]:checked')) {
+    document.getElementById('e_ret').classList.add('show');
+    errs.push('วิธีรับคืน'); ok = false;
+  }
+  const retV = document.querySelector('input[name="returnMethod"]:checked')?.value;
+  if (retV === 'ส่งคืน') chk('f_retAddr', 'e_retAddr', null, 'ที่อยู่ส่งคืน');
+
+  if (!ok) {
+    const first = document.querySelector('.is-err');
+    if (first) first.scrollIntoView({ behavior:'smooth', block:'center' });
+    alert('⚠️ กรุณากรอกข้อมูลให้ครบถ้วน\n\nข้อมูลที่ยังขาด:\n• ' +
+      errs.slice(0, 10).join('\n• ') + (errs.length > 10 ? `\n...และอีก ${errs.length - 10} รายการ` : ''));
+  }
+  return ok;
+}
+
+/* ============================================================
+   SUBMIT
+   ============================================================ */
+document.getElementById('regForm').addEventListener('submit', e => {
+  e.preventDefault();
+  if (!fullValidate()) return;
+  saveEntry();
+});
+
+function saveEntry() {
+  const variety = document.getElementById('f_variety').value;
+  const vv = document.getElementById('f_variety').value;
+  const varietyFull = (vv === 'Mixed' || vv === 'Other')
+    ? `${variety} — ${getVal('f_varietyCustom')}`
+    : variety;
+
+  const retMethod = document.querySelector('input[name="returnMethod"]:checked')?.value || '';
+
+  const reg = {
+    id:              Date.now(),
+    regTimestamp:    document.getElementById('f_ts').value,
+    regDateThai:     document.getElementById('tsDisplay').textContent,
+    firstNameTh:     getVal('f_fn_th'),
+    lastNameTh:      getVal('f_ln_th'),
+    firstNameEn:     getVal('f_fn_en'),
+    lastNameEn:      getVal('f_ln_en'),
+    nationalId:      getVal('f_nid'),
+    nidFileName:     files_nid.map(f => f.name).join('; ') || '—',
+    phone:           getVal('f_phone'),
+    lineId:          getVal('f_line'),
+    email:           getVal('f_email'),
+    occupation:      document.getElementById('f_occ').options[document.getElementById('f_occ').selectedIndex]?.text || '',
+    previousCoE:     document.getElementById('f_prev').value,
+    previousCoEYear: document.getElementById('f_prev').value === 'เคย' ? getVal('f_prevYear') : '—',
+    variety:         varietyFull,
+    process:         document.getElementById('f_process').value,
+    coffeeAmount:    getVal('f_amt'),
+    farmNameTh:      getVal('f_farm_th'),
+    farmNameEn:      getVal('f_farm_en'),
+    addressNo:       getVal('f_no'),
+    addressMoo:      getVal('f_moo'),
+    addressRoad:     getVal('f_road'),
+    addressSub:      getVal('f_sub'),
+    addressDist:     getVal('f_dist'),
+    addressProv:     getVal('f_prov'),
+    addressPost:     getVal('f_post'),
+    masl:            getVal('f_masl'),
+    farmSize:        getVal('f_size'),
+    farmHistory:     getVal('f_hist'),
+    farmPhotoFiles:  files_farm.map(f => f.name).join('; ') || '—',
+    certFileName:    files_cert.map(f => f.name).join('; ') || '—',
+    deliveryMethod:  document.querySelector('input[name="deliveryMethod"]:checked')?.value || '',
+    returnMethod:    retMethod,
+    returnAddress:   retMethod === 'ส่งคืน' ? getVal('f_retAddr') : '—',
+    status:          'Checked'
+  };
+
+  const all = JSON.parse(localStorage.getItem(STORE_KEY) || '[]');
+  all.push(reg);
+  localStorage.setItem(STORE_KEY, JSON.stringify(all));
+
+  showSuccess(reg);
+}
+
+/* ============================================================
+   SUCCESS SCREEN
+   ============================================================ */
+function showSuccess(reg) {
+  document.getElementById('regForm').style.display    = 'none';
+  document.getElementById('adminFloat').style.display = 'none';
+  const sc = document.getElementById('successScreen');
+  sc.classList.add('show');
+
+  document.getElementById('successDetail').innerHTML = `
+    <div class="success-card-title">✅ บันทึกข้อมูลเรียบร้อยแล้ว</div>
+    <div class="success-row"><span class="success-key">👤</span><span class="success-val">${reg.firstNameTh} ${reg.lastNameTh}</span></div>
+    <div class="success-row"><span class="success-key">🏡</span><span class="success-val">${reg.farmNameTh}</span></div>
+    <div class="success-row"><span class="success-key">☕</span><span class="success-val">${reg.variety}</span></div>
+    <div class="success-row"><span class="success-key">⚙️</span><span class="success-val">${reg.process}</span></div>
+    <div class="success-row"><span class="success-key">📅</span><span class="success-val" style="font-size:12.5px">${reg.regDateThai}</span></div>
+  `;
+  sc.scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
+/* ============================================================
+   ADMIN ACTIONS & CONTEXT
+   ============================================================ */
+function newEntry() {
+  document.getElementById('successScreen').classList.remove('show');
+  document.getElementById('regForm').style.display    = 'block';
+  document.getElementById('adminFloat').style.display = 'block';
+  clearForm(true);
+  window.scrollTo({ top:0, behavior:'smooth' });
+}
+
+/* ============================================================
+   CLEAR / RESET
+   ============================================================ */
+function clearForm(skipConfirm = false) {
+  if (!skipConfirm && !confirm('ต้องการล้างข้อมูลทั้งหมดในแบบฟอร์มหรือไม่?')) return;
+  document.getElementById('regForm').reset();
+
+  files_nid  = []; renderFiles(files_nid,  'list_nid',  'f_nid_file');
+  files_farm = []; renderFiles(files_farm, 'list_farm', 'f_farm_photos');
+  files_cert = []; renderFiles(files_cert, 'list_cert', 'f_cert');
+
+  document.getElementById('grp_prevYear').style.display     = 'none';
+  document.getElementById('grp_varietyCustom').style.display = 'none';
+  document.getElementById('grp_retAddr').style.display       = 'none';
+
+  document.querySelectorAll('.finput,.fselect,.ftextarea').forEach(e => e.classList.remove('is-err','is-ok'));
+  document.querySelectorAll('.ferr').forEach(e => e.classList.remove('show'));
+  document.getElementById('charCurrentCount').textContent = '0';
+  document.getElementById('charCounter').className = 'char-counter';
+
+  stampTime();
+  syncStatus();
+  window.scrollTo({ top:0, behavior:'smooth' });
+}
+
+/* ============================================================
+   ADMIN LOGIN
+   ============================================================ */
+function openAdminLogin() {
+  document.getElementById('adminPwd').value = '';
+  document.getElementById('loginMsg').textContent = '';
+  document.getElementById('loginMsg').className = 'admin-msg';
+  openModal('modalLogin');
+}
+
+function doLogin() {
+  const pwd = document.getElementById('adminPwd').value;
+  if (btoa(pwd) === ADMIN_HASH) {
+    closeModal('modalLogin');
+    openAdminPanel();
+  } else {
+    const m = document.getElementById('loginMsg');
+    m.textContent = '❌ รหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง';
+    m.className = 'admin-msg err';
+    document.getElementById('adminPwd').value = '';
+  }
+}
+
+/* ============================================================
+   ADMIN PANEL
+   ============================================================ */
+function openAdminPanel() {
+  const all = JSON.parse(localStorage.getItem(STORE_KEY) || '[]');
+  document.getElementById('regCount').textContent = `${all.length} รายการ`;
+
+  const tbody = document.getElementById('adminTbody');
+  if (!all.length) {
+    tbody.innerHTML = '<tr><td colspan="12" style="text-align:center;padding:24px;color:var(--text-sub)">ยังไม่มีข้อมูลการลงทะเบียน</td></tr>';
+  } else {
+    tbody.innerHTML = all.map((r, i) => {
+      const d = new Date(r.regTimestamp);
+      const dt = d.toLocaleDateString('th-TH') + '<br><small style="color:var(--text-sub)">' + d.toLocaleTimeString('th-TH', {hour:'2-digit',minute:'2-digit'}) + '</small>';
+      return `<tr>
+        <td>${i + 1}</td>
+        <td>${dt}</td>
+        <td><strong>${r.firstNameTh} ${r.lastNameTh}</strong><br><small style="color:var(--text-sub)">${r.firstNameEn} ${r.lastNameEn}</small></td>
+        <td>${r.phone}</td>
+        <td style="max-width:140px">${r.email}</td>
+        <td>${r.farmNameTh}</td>
+        <td style="font-size:12px">${r.occupation}</td>
+        <td>${r.variety}</td>
+        <td style="font-size:12px">${r.process}</td>
+        <td>${r.masl}</td>
+        <td><span class="badge badge-ok">✅ ${r.status}</span></td>
+        <td><button class="btn btn-danger btn-sm" onclick="deleteReg(${r.id})">🗑️</button></td>
+      </tr>`;
+    }).join('');
+  }
+  openModal('modalAdmin');
+}
+
+function deleteReg(id) {
+  if (!confirm('ต้องการลบรายการนี้หรือไม่?')) return;
+  let all = JSON.parse(localStorage.getItem(STORE_KEY) || '[]');
+  all = all.filter(r => r.id !== id);
+  localStorage.setItem(STORE_KEY, JSON.stringify(all));
+  openAdminPanel();
+}
+
+function purgeAll() {
+  if (!confirm('⚠️ ลบข้อมูลการลงทะเบียนทั้งหมด?\n\nการกระทำนี้ไม่สามารถยกเลิกได้')) return;
+  if (!confirm('ยืนยันอีกครั้ง — ลบข้อมูลทั้งหมดถาวร?')) return;
+  localStorage.removeItem(STORE_KEY);
+  openAdminPanel();
+}
+
+/* ============================================================
+   CSV EXPORT
+   ============================================================ */
+function exportCSV() {
+  const all = JSON.parse(localStorage.getItem(STORE_KEY) || '[]');
+  if (!all.length) { alert('ไม่มีข้อมูลการลงทะเบียน'); return; }
+
+  const headers = [
+    'ลำดับ','วันที่ลงทะเบียน (ISO)','วันที่ลงทะเบียน (ไทย)',
+    'ชื่อ (ไทย)','นามสกุล (ไทย)','ชื่อ (อังกฤษ)','นามสกุล (อังกฤษ)',
+    'เลขบัตรประชาชน','ไฟล์สำเนาบัตร',
+    'เบอร์ติดต่อ','ไอดีไลน์','อีเมล',
+    'อาชีพหลัก','เคยร่วม CoE','ปีที่เคยร่วม',
+    'พันธุ์','กระบวนการแปรรูป','จำนวนกะลา',
+    'ชื่อฟาร์ม (ไทย)','ชื่อฟาร์ม (อังกฤษ)',
+    'เลขที่','หมู่','ถนน','ตำบล','อำเภอ','จังหวัด','รหัสไปรษณีย์',
+    'MASL','ขนาดฟาร์ม (ไร่)','ประวัติฟาร์ม',
+    'ไฟล์ภาพฟาร์ม','ไฟล์ใบรับรองฟาร์ม',
+    'วิธีส่งกาแฟ','วิธีรับกาแฟคืน','ที่อยู่ส่งคืน',
+    'สถานะ'
+  ];
+
+  const rows = all.map((r, i) => [
+    i + 1, r.regTimestamp, r.regDateThai,
+    r.firstNameTh, r.lastNameTh, r.firstNameEn, r.lastNameEn,
+    r.nationalId, r.nidFileName,
+    r.phone, r.lineId, r.email,
+    r.occupation, r.previousCoE, r.previousCoEYear,
+    r.variety, r.process, r.coffeeAmount,
+    r.farmNameTh, r.farmNameEn,
+    r.addressNo, r.addressMoo, r.addressRoad,
+    r.addressSub, r.addressDist, r.addressProv, r.addressPost,
+    r.masl, r.farmSize, r.farmHistory,
+    r.farmPhotoFiles, r.certFileName,
+    r.deliveryMethod, r.returnMethod, r.returnAddress,
+    r.status
+  ]);
+
+  const esc = v => {
+    const s = String(v ?? '').replace(/\n/g, ' ');
+    return (s.includes(',') || s.includes('"') || s.includes('\n'))
+      ? `"${s.replace(/"/g, '""')}"` : s;
+  };
+
+  const csv = '\uFEFF' + [headers, ...rows].map(row => row.map(esc).join(',')).join('\n');
+
+  const blob = new Blob([csv], { type:'text/csv;charset=utf-8;' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  const date = new Date().toLocaleDateString('th-TH', {year:'numeric',month:'2-digit',day:'2-digit'}).replace(/\//g,'-');
+  a.href     = url;
+  a.download = `CoE_Thailand_Registrations_${date}.csv`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+/* ============================================================
+   MODAL HELPERS
+   ============================================================ */
+function openModal(id)  { document.getElementById(id).classList.remove('hidden'); }
+function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+
+document.querySelectorAll('.overlay').forEach(o => {
+  o.addEventListener('click', e => { if (e.target === o) o.classList.add('hidden'); });
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.querySelectorAll('.overlay').forEach(o => o.classList.add('hidden'));
+});
+</script>
+</body>
+</html>
