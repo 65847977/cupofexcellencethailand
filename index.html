@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cup of Excellence Thailand — กฎกติกาและแบบฟอร์มลงทะเบียน</title>
+  <title>Cup of Excellence Thailand — แบบฟอร์มลงทะเบียนส่งกาแฟเข้าประกวด</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
@@ -250,39 +250,6 @@
     .card-body { padding: 24px 22px; }
 
     /* =========================================================
-       HOME RULES SCREEN (NEW SECTION)
-    ========================================================= */
-    .rules-list {
-      margin-left: 20px;
-      margin-bottom: 16px;
-      color: var(--text-sub);
-    }
-    .rules-list li {
-      margin-bottom: 8px;
-    }
-    .accept-container {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--bg-input);
-      padding: 16px;
-      border-radius: 8px;
-      border: 1.5px solid var(--border-color);
-      margin-top: 24px;
-    }
-    .accept-container input[type="checkbox"] {
-      width: 18px;
-      height: 18px;
-      accent-color: var(--brand-red);
-      cursor: pointer;
-    }
-    .accept-container label {
-      font-size: 14.5px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    /* =========================================================
        FORM ELEMENTS
     ========================================================= */
     .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -490,23 +457,16 @@
       font-weight: 700;
       cursor: pointer;
       border: none;
-      transition: transform .15s, box-shadow .15s, background-color 0.2s;
+      transition: transform .15s, box-shadow .15s;
     }
     .btn:active { transform: scale(.98); }
-    .btn:disabled {
-      background: #4a4a4c !important;
-      color: var(--text-muted) !important;
-      cursor: not-allowed;
-      box-shadow: none !important;
-      transform: none !important;
-    }
 
     .btn-primary {
       background: linear-gradient(135deg, var(--brand-blue), #38247a);
       color: var(--brand-white);
       box-shadow: 0 4px 14px rgba(36, 24, 76, 0.4);
     }
-    .btn-primary:hover:not(:disabled) { box-shadow: 0 6px 20px rgba(36, 24, 76, 0.6); transform: translateY(-1px); }
+    .btn-primary:hover { box-shadow: 0 6px 20px rgba(36, 24, 76, 0.6); transform: translateY(-1px); }
 
     .btn-outline {
       background: transparent;
@@ -514,13 +474,6 @@
       border: 2px solid var(--border-color);
     }
     .btn-outline:hover { background: rgba(255,255,255,.05); border-color: var(--text-sub); }
-
-    .btn-gold {
-      background: linear-gradient(135deg, #444, var(--brand-white));
-      color: #000;
-      box-shadow: 0 4px 14px rgba(255, 255, 255, 0.1);
-    }
-    .btn-gold:hover { box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2); transform: translateY(-1px); }
 
     .btn-danger { background: var(--brand-red); color: var(--brand-white); }
     .btn-sm { padding: 7px 16px; font-size: 13px; border-radius: 7px; }
@@ -531,30 +484,6 @@
       justify-content: center;
       margin-top: 32px;
     }
-
-    /* =========================================================
-       FLOATING ADMIN BUTTON
-    ========================================================= */
-    .admin-float {
-      position: fixed;
-      bottom: 22px; right: 22px;
-      z-index: 200;
-    }
-    .admin-float-btn {
-      background: #1a1a1c;
-      color: var(--text-sub);
-      border: 1px solid var(--border-color);
-      border-radius: 50px;
-      padding: 9px 18px;
-      font-family: 'Sarabun', sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: var(--shadow-l);
-      transition: color .2s, background .2s;
-      display: flex; align-items: center; gap: 6px;
-    }
-    .admin-float-btn:hover { color: var(--brand-white); background: var(--bg-input); }
 
     /* =========================================================
        MODALS
@@ -599,49 +528,6 @@
     }
     .modal-close:hover { color: var(--brand-red); }
     .modal-body { padding: 22px; }
-
-    /* Admin error msg */
-    .admin-msg {
-      font-size: 13px;
-      padding: 8px 12px;
-      border-radius: 6px;
-      margin-bottom: 12px;
-      display: none;
-    }
-    .admin-msg.err { background: var(--red-bg); color: #ff5252; display: block; }
-
-    /* =========================================================
-       ADMIN TABLE
-    ========================================================= */
-    .tbl-wrap { overflow-x: auto; }
-
-    .admin-tbl {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 12.5px;
-    }
-    .admin-tbl th {
-      background: var(--bg-input);
-      padding: 8px 12px;
-      text-align: left;
-      font-weight: 700;
-      color: var(--text-main);
-      white-space: nowrap;
-      border-bottom: 1.5px solid var(--border-color);
-      position: sticky; top: 0;
-    }
-    .admin-tbl td {
-      padding: 8px 12px;
-      border-bottom: 1px solid var(--border-color);
-      color: var(--text-main);
-      max-width: 180px;
-      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-    }
-    .admin-tbl tr:hover td { background: rgba(255,255,255,0.02); }
-
-    .badge { padding: 2px 9px; border-radius: 12px; font-size: 11.5px; font-weight: 700; }
-    .badge-ok  { background: var(--white-bg); color: var(--brand-white); border: 1px solid var(--border-color); }
-    .badge-err { background: var(--red-bg); color: #ff5252; }
 
     /* =========================================================
        SUCCESS SCREEN
@@ -747,21 +633,15 @@
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════
-     HEADER
-═══════════════════════════════════════════════ -->
 <header class="site-header">
-  <div class="header-eyebrow">Official Registration Form</div>
+  <div class="header-eyebrow">Official Registration Form 2025</div>
   <h1 class="header-title">Cup of <em>Excellence</em></h1>
   <p style="font-family:'Sarabun',sans-serif;font-size:1.5rem;font-weight:700;color:rgba(255,255,255,.85);margin-top:4px;letter-spacing:1px;">THAILAND</p>
   <div class="header-divider"></div>
   <p class="header-sub">แบบฟอร์มลงทะเบียนส่งกาแฟเข้าร่วมการประกวด ☕ Coffee Competition Entry Form</p>
 </header>
 
-<!-- ═══════════════════════════════════════════════
-     STATUS BAR (Hidden on Home Screen)
-═══════════════════════════════════════════════ -->
-<div class="status-bar" id="statusBar" style="display: none;">
+<div class="status-bar" id="statusBar">
   <div class="status-pill unchecked" id="statusPill">
     <span class="status-dot"></span>
     <span id="statusLabel">Unchecked — ข้อมูลไม่ครบถ้วน</span>
@@ -775,45 +655,10 @@
   <div class="status-timestamp" id="statusTs">📅 —</div>
 </div>
 
-<!-- ═══════════════════════════════════════════════
-     MAIN
-═══════════════════════════════════════════════ -->
 <div class="main-wrap">
 
-  <!-- ─── HOME SCREEN: RULES AND REGULATIONS (NEW) ─── -->
-  <div id="homeRulesScreen">
-    <div class="card">
-      <div class="card-head">
-        <div class="card-num">📋</div>
-        <div class="card-title">กฎกติกาและเงื่อนไขการส่งกาแฟเข้าประกวด — Rules &amp; Regulations</div>
-      </div>
-      <div class="card-body">
-        <p style="margin-bottom: 14px; font-weight: 700; color: var(--brand-white);">กรุณาอ่านและทำความเข้าใจกฎกติกาอย่างละเอียดก่อนเริ่มลงทะเบียน:</p>
-        
-        <ul class="rules-list">
-          <li>1. ผู้สมัครจะต้องเป็นเกษตรกร หรือนักแปรรูปที่มีฟาร์มตั้งอยู่ในประเทศไทยเท่านั้น</li>
-          <li>2. กาแฟกะลาที่ส่งเข้าประกวดจะต้องมีจำนวนและน้ำหนักเป็นไปตามเกณฑ์ที่คณะกรรมการกำหนด</li>
-          <li>3. เอกสารและภาพถ่ายฟาร์มที่อัปโหลดจะต้องเป็นข้อมูลจริง คมชัด และไม่หมดอายุ</li>
-          <li>4. กองประกวดขอสงวนสิทธิ์ในการตัดสิทธิ์ผู้สมัครที่ให้ข้อมูลเท็จหรือไม่ปฏิบัติตามกฎเกณฑ์</li>
-        </ul>
+  <form id="regForm" novalidate>
 
-        <div class="accept-container">
-          <input type="checkbox" id="acceptRulesCheckbox" onchange="toggleConsentButtons()" />
-          <label for="acceptRulesCheckbox">ฉันได้อ่านและยอมรับกฎกติกา เงื่อนไข และข้อกำหนดข้างต้นทุกประการ</label>
-        </div>
-
-        <div class="form-actions" style="margin-top: 24px;">
-          <button type="button" class="btn btn-outline" onclick="rejectConsent()">❌ ปฏิเสธ</button>
-          <button type="button" class="btn btn-primary" id="agreeBtn" onclick="acceptConsent()" disabled>🤝 ยินยอม</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ─── FORM (Hidden on Start) ─── -->
-  <form id="regForm" novalidate style="display: none;">
-
-    <!-- ══════════ SECTION 1: ข้อมูลส่วนตัว ══════════ -->
     <div class="card">
       <div class="card-head">
         <div class="card-num">1</div>
@@ -821,7 +666,6 @@
       </div>
       <div class="card-body">
 
-        <!-- Timestamp -->
         <div class="fgroup" style="margin-bottom:18px">
           <label class="flabel">📅 วันและเวลาที่ลงทะเบียน <span style="font-weight:400;font-size:12px;color:var(--text-sub)">(บันทึกโดยระบบอัตโนมัติ)</span></label>
           <div class="ts-display"><span class="ts-icon">🕐</span><span id="tsDisplay">กำลังบันทึก...</span></div>
@@ -831,22 +675,22 @@
         <div class="grid-2">
           <div class="fgroup">
             <label class="flabel" for="f_fn_th">ชื่อภาษาไทย <span class="req">*</span></label>
-            <input type="text" id="f_fn_th" class="finput" placeholder="ชื่อ" />
+            <input type="text" id="f_fn_th" name="firstNameTh" class="finput" placeholder="ชื่อ" />
             <span class="ferr" id="e_fn_th">กรุณากรอกชื่อภาษาไทย</span>
           </div>
           <div class="fgroup">
             <label class="flabel" for="f_ln_th">นามสกุลภาษาไทย <span class="req">*</span></label>
-            <input type="text" id="f_ln_th" class="finput" placeholder="นามสกุล" />
+            <input type="text" id="f_ln_th" name="lastNameTh" class="finput" placeholder="นามสกุล" />
             <span class="ferr" id="e_ln_th">กรุณากรอกนามสกุลภาษาไทย</span>
           </div>
           <div class="fgroup">
             <label class="flabel" for="f_fn_en">ชื่อภาษาอังกฤษ <span class="req">*</span></label>
-            <input type="text" id="f_fn_en" class="finput" placeholder="First Name" />
+            <input type="text" id="f_fn_en" name="firstNameEn" class="finput" placeholder="First Name" />
             <span class="ferr" id="e_fn_en">กรุณากรอกชื่อภาษาอังกฤษ</span>
           </div>
           <div class="fgroup">
             <label class="flabel" for="f_ln_en">นามสกุลภาษาอังกฤษ <span class="req">*</span></label>
-            <input type="text" id="f_ln_en" class="finput" placeholder="Last Name" />
+            <input type="text" id="f_ln_en" name="lastNameEn" class="finput" placeholder="Last Name" />
             <span class="ferr" id="e_ln_en">กรุณากรอกนามสกุลภาษาอังกฤษ</span>
           </div>
         </div>
@@ -856,7 +700,7 @@
         <div class="grid-2">
           <div class="fgroup col-2">
             <label class="flabel" for="f_nid">หมายเลขบัตรประจำตัวประชาชน <span class="req">*</span></label>
-            <input type="text" id="f_nid" class="finput" placeholder="X-XXXX-XXXXX-XX-X" maxlength="17" />
+            <input type="text" id="f_nid" name="nationalId" class="finput" placeholder="X-XXXX-XXXXX-XX-X" maxlength="17" />
             <span class="fhint">กรอกตัวเลข 13 หลัก</span>
             <span class="ferr" id="e_nid">กรุณากรอกเลขบัตรประชาชน 13 หลักที่ถูกต้อง</span>
           </div>
@@ -881,17 +725,17 @@
         <div class="grid-2">
           <div class="fgroup">
             <label class="flabel" for="f_phone">เบอร์ติดต่อ <span class="req">*</span></label>
-            <input type="tel" id="f_phone" class="finput" placeholder="0XX-XXX-XXXX" />
+            <input type="tel" id="f_phone" name="phone" class="finput" placeholder="0XX-XXX-XXXX" />
             <span class="ferr" id="e_phone">กรุณากรอกเบอร์ติดต่อ</span>
           </div>
           <div class="fgroup">
             <label class="flabel" for="f_line">ไอดีไลน์ (Line ID) <span class="req">*</span></label>
-            <input type="text" id="f_line" class="finput" placeholder="@LineID" />
+            <input type="text" id="f_line" name="lineId" class="finput" placeholder="@LineID" />
             <span class="ferr" id="e_line">กรุณากรอกไอดีไลน์</span>
           </div>
           <div class="fgroup col-2">
             <label class="flabel" for="f_email">อีเมล <span class="req">*</span></label>
-            <input type="email" id="f_email" class="finput" placeholder="example@email.com" />
+            <input type="email" id="f_email" name="email" class="finput" placeholder="example@email.com" />
             <span class="ferr" id="e_email">กรุณากรอกอีเมลที่ถูกต้อง</span>
           </div>
         </div>
@@ -899,7 +743,6 @@
       </div>
     </div>
 
-    <!-- ══════════ SECTION 2: ข้อมูลการประกวด ══════════ -->
     <div class="card">
       <div class="card-head">
         <div class="card-num">2</div>
@@ -910,7 +753,7 @@
         <div class="grid-2">
           <div class="fgroup">
             <label class="flabel" for="f_occ">อาชีพหลัก <span class="req">*</span></label>
-            <select id="f_occ" class="fselect">
+            <select id="f_occ" name="occupation" class="fselect">
               <option value="">— กรุณาเลือก —</option>
               <option value="นักแปรรูป (Processor)">นักแปรรูป (Processor)</option>
               <option value="เกษตรกร (Farmer)">เกษตรกร (Farmer)</option>
@@ -920,7 +763,7 @@
           </div>
           <div class="fgroup">
             <label class="flabel" for="f_amt">จำนวนกะลากาแฟที่ส่งเข้าประกวด <span class="req">*</span></label>
-            <input type="number" id="f_amt" class="finput" placeholder="ระบุจำนวน" min="1" />
+            <input type="number" id="f_amt" name="coffeeAmount" class="finput" placeholder="ระบุจำนวน" min="1" />
             <span class="ferr" id="e_amt">กรุณาระบุจำนวนกะลากาแฟ</span>
           </div>
         </div>
@@ -930,17 +773,16 @@
         <div class="grid-2">
           <div class="fgroup">
             <label class="flabel" for="f_prev">เคยเข้าร่วมการประกวด Cup of Excellence มาก่อนหรือไม่ <span class="req">*</span></label>
-            <select id="f_prev" class="fselect" onchange="togglePrevYear()">
+            <select id="f_prev" name="previousCoE" class="fselect" onchange="togglePrevYear()">
               <option value="">— กรุณาเลือก —</option>
               <option value="เคย">เคย</option>
               <option value="ไม่เคย">ไม่เคย</option>
             </select>
             <span class="ferr" id="e_prev">กรุณาเลือก</span>
           </div>
-          <!-- Conditional: show only if "เคย" -->
           <div class="fgroup" id="grp_prevYear" style="display:none">
             <label class="flabel" for="f_prevYear">ระบุปีที่เคยเข้าร่วมการประกวด <span class="req">*</span></label>
-            <input type="text" id="f_prevYear" class="finput" placeholder="เช่น 2023, 2024 หรือ 2566, 2567" />
+            <input type="text" id="f_prevYear" name="previousCoEYear" class="finput" placeholder="เช่น 2023, 2024 หรือ 2566, 2567" />
             <span class="fhint">ระบุปี ค.ศ. หรือ พ.ศ. หากเคยเข้าร่วมหลายปีให้ระบุทุกปี</span>
             <span class="ferr" id="e_prevYear">กรุณาระบุปีที่เคยเข้าร่วม</span>
           </div>
@@ -967,7 +809,7 @@
           </div>
           <div class="fgroup">
             <label class="flabel" for="f_process">กระบวนการแปรรูป (Process) <span class="req">*</span> <button type="button" class="info-trigger-btn" onclick="openCoffeeModal()">ดูคำอธิบาย</button></label>
-            <select id="f_process" class="fselect">
+            <select id="f_process" name="process" class="fselect">
               <option value="">— กรุณาเลือก —</option>
               <option value="Washed (Traditional)">Washed (Traditional)</option>
               <option value="Honey (Traditional)">Honey (Traditional)</option>
@@ -980,7 +822,6 @@
           </div>
         </div>
 
-        <!-- Conditional: Mixed / Other variety detail -->
         <div id="grp_varietyCustom" style="display:none; margin-top:14px">
           <div class="fgroup">
             <label class="flabel" for="f_varietyCustom">กรุณาระบุพันธุ์กาแฟ <span class="req">*</span></label>
@@ -992,7 +833,6 @@
       </div>
     </div>
 
-    <!-- ══════════ SECTION 3: ข้อมูลฟาร์ม ══════════ -->
     <div class="card">
       <div class="card-head">
         <div class="card-num">3</div>
@@ -1003,12 +843,12 @@
         <div class="grid-2">
           <div class="fgroup">
             <label class="flabel" for="f_farm_th">ชื่อฟาร์มภาษาไทย <span class="req">*</span></label>
-            <input type="text" id="f_farm_th" class="finput" placeholder="ชื่อฟาร์ม" />
+            <input type="text" id="f_farm_th" name="farmNameTh" class="finput" placeholder="ชื่อฟาร์ม" />
             <span class="ferr" id="e_farm_th">กรุณากรอกชื่อฟาร์มภาษาไทย</span>
           </div>
           <div class="fgroup">
             <label class="flabel" for="f_farm_en">ชื่อฟาร์มภาษาอังกฤษ <span class="req">*</span></label>
-            <input type="text" id="f_farm_en" class="finput" placeholder="Farm Name" />
+            <input type="text" id="f_farm_en" name="farmNameEn" class="finput" placeholder="Farm Name" />
             <span class="ferr" id="e_farm_en">กรุณากรอกชื่อฟาร์มภาษาอังกฤษ</span>
           </div>
         </div>
@@ -1019,45 +859,45 @@
         <div class="grid-3">
           <div class="fgroup">
             <label class="flabel" for="f_no">เลขที่ <span class="req">*</span></label>
-            <input type="text" id="f_no" class="finput" placeholder="เลขที่" />
+            <input type="text" id="f_no" name="addressNo" class="finput" placeholder="เลขที่" />
             <span class="ferr" id="e_no">กรุณากรอกเลขที่</span>
           </div>
           <div class="fgroup">
             <label class="flabel" for="f_moo">หมู่ <span class="opt">(ถ้ามี)</span></label>
-            <input type="text" id="f_moo" class="finput" placeholder="หมู่ที่" />
+            <input type="text" id="f_moo" name="addressMoo" class="finput" placeholder="หมู่ที่" />
           </div>
           <div class="fgroup">
             <label class="flabel" for="f_road">ถนน <span class="opt">(ถ้ามี)</span></label>
-            <input type="text" id="f_road" class="finput" placeholder="ถนน" />
+            <input type="text" id="f_road" name="addressRoad" class="finput" placeholder="ถนน" />
           </div>
           <div class="fgroup">
             <label class="flabel" for="f_sub">ตำบล <span class="req">*</span></label>
-            <input type="text" id="f_sub" class="finput" placeholder="ตำบล" />
+            <input type="text" id="f_sub" name="addressSub" class="finput" placeholder="ตำบล" />
             <span class="ferr" id="e_sub">กรุณากรอกตำบล</span>
           </div>
           <div class="fgroup">
             <label class="flabel" for="f_dist">อำเภอ <span class="req">*</span></label>
-            <input type="text" id="f_dist" class="finput" placeholder="อำเภอ" />
+            <input type="text" id="f_dist" name="addressDist" class="finput" placeholder="อำเภอ" />
             <span class="ferr" id="e_dist">กรุณากรอกอำเภอ</span>
           </div>
           <div class="fgroup">
             <label class="flabel" for="f_prov">จังหวัด <span class="req">*</span></label>
-            <input type="text" id="f_prov" class="finput" placeholder="จังหวัด" />
+            <input type="text" id="f_prov" name="addressProv" class="finput" placeholder="จังหวัด" />
             <span class="ferr" id="e_prov">กรุณากรอกจังหวัด</span>
           </div>
           <div class="fgroup">
             <label class="flabel" for="f_post">รหัสไปรษณีย์ <span class="req">*</span></label>
-            <input type="text" id="f_post" class="finput" placeholder="XXXXX" maxlength="5" />
+            <input type="text" id="f_post" name="addressPost" class="finput" placeholder="XXXXX" maxlength="5" />
             <span class="ferr" id="e_post">กรุณากรอกรหัสไปรษณีย์</span>
           </div>
           <div class="fgroup">
             <label class="flabel" for="f_masl">ความสูงจากระดับน้ำทะเล (MASL) <span class="req">*</span></label>
-            <input type="number" id="f_masl" class="finput" placeholder="เช่น 1200" min="0" />
+            <input type="number" id="f_masl" name="masl" class="finput" placeholder="เช่น 1200" min="0" />
             <span class="ferr" id="e_masl">กรุณาระบุความสูง MASL</span>
           </div>
           <div class="fgroup">
             <label class="flabel" for="f_size">ขนาดพื้นที่ฟาร์ม (ไร่) <span class="req">*</span></label>
-            <input type="number" id="f_size" class="finput" placeholder="เช่น 5" min="0" step="0.1" />
+            <input type="number" id="f_size" name="farmSize" class="finput" placeholder="เช่น 5" min="0" step="0.1" />
             <span class="ferr" id="e_size">กรุณาระบุขนาดฟาร์ม</span>
           </div>
         </div>
@@ -1068,7 +908,7 @@
           <label class="flabel" for="f_hist">
             ประวัติความเป็นมา หรือความน่าสนใจของฟาร์ม <span class="req">*</span>
           </label>
-          <textarea id="f_hist" class="ftextarea"
+          <textarea id="f_hist" name="farmHistory" class="ftextarea"
             placeholder="เล่าเรื่องราวของฟาร์ม ประวัติความเป็นมา จุดเด่น หรือความน่าสนใจที่ต้องการให้คณะกรรมการรับทราบ..."
             maxlength="1300"
             oninput="countChars(this)"></textarea>
@@ -1114,7 +954,6 @@
       </div>
     </div>
 
-    <!-- ══════════ SECTION 4: การส่งและรับคืนกาแฟ ══════════ -->
     <div class="card">
       <div class="card-head">
         <div class="card-num">4</div>
@@ -1175,11 +1014,10 @@
           <span class="ferr" id="e_ret">กรุณาเลือกวิธีการรับกาแฟคืน</span>
         </div>
 
-        <!-- Conditional: shipping return address -->
         <div id="grp_retAddr" style="display:none; margin-top:14px">
           <div class="fgroup">
             <label class="flabel" for="f_retAddr">ที่อยู่สำหรับส่งคืนกาแฟ <span class="req">*</span></label>
-            <textarea id="f_retAddr" class="ftextarea" placeholder="กรอกที่อยู่สำหรับส่งคืน..." style="min-height:80px"></textarea>
+            <textarea id="f_retAddr" name="returnAddress" class="ftextarea" placeholder="กรอกที่อยู่สำหรับส่งคืน..." style="min-height:80px"></textarea>
             <div class="warn-text">⚠️ ที่อยู่จะต้องเป็นที่อยู่ที่บริการขนส่งสามารถเดินทางส่งถึงได้เท่านั้น</div>
             <span class="ferr" id="e_retAddr">กรุณากรอกที่อยู่สำหรับส่งคืน</span>
           </div>
@@ -1188,106 +1026,33 @@
       </div>
     </div>
 
-    <!-- ══════════ SUBMIT ══════════ -->
+    <input type="hidden" id="f_id" name="id" />
+    <input type="hidden" id="f_regDateThai" name="regDateThai" />
+    <input type="hidden" id="f_nidFileName" name="nidFileName" />
+    <input type="hidden" id="f_farmPhotoFiles" name="farmPhotoFiles" />
+    <input type="hidden" id="f_certFileName" name="certFileName" />
+    <input type="hidden" id="f_variety_full" name="variety" />
+    <input type="hidden" id="f_status" name="status" value="Checked" />
+
     <div class="form-actions">
       <button type="button" class="btn btn-outline" onclick="clearForm()">🔄 ล้างข้อมูล</button>
-      <button type="submit" class="btn btn-primary">☕ ยืนยันการสมัคร</button>
+      <button type="submit" id="submitBtn" class="btn btn-primary">☕ ยืนยันการสมัคร</button>
     </div>
 
   </form>
 
-  <!-- ─── SUCCESS SCREEN ─── -->
   <div id="successScreen">
     <div class="success-wrap">
       <div class="success-icon">☕</div>
       <h2 class="success-title">ลงทะเบียนสำเร็จ!</h2>
-      <p class="success-sub">ขอบคุณที่สมัครเข้าร่วมการประกวด Cup of Excellence Thailand</p>
+      <p class="success-sub">ข้อมูลของคุณถูกบันทึกส่งตรงไปยัง Google Sheet เรียบร้อยแล้ว</p>
       <div class="success-card" id="successDetail"></div>
       <button class="btn btn-primary" onclick="newEntry()">➕ ลงทะเบียนรายการใหม่</button>
     </div>
   </div>
 
-</div><!-- /.main-wrap -->
-
-<!-- ─── ADMIN FLOAT ─── -->
-<div class="admin-float" id="adminFloat">
-  <button class="admin-float-btn" onclick="openAdminLogin()">🔐 Admin</button>
 </div>
 
-<!-- ═══════════════════════════════════════════════
-     MODAL: Admin Login
-═══════════════════════════════════════════════ -->
-<div class="overlay hidden" id="modalLogin">
-  <div class="modal">
-    <div class="modal-head">
-      <span class="modal-head-title">🔐 Admin Access — ผู้ดูแลระบบ</span>
-      <button class="modal-close" onclick="closeModal('modalLogin')">✕</button>
-    </div>
-    <div class="modal-body">
-      <div class="admin-msg" id="loginMsg"></div>
-      <div class="fgroup" style="margin-bottom:16px">
-        <label class="flabel">รหัสผ่านผู้ดูแลระบบ</label>
-        <input type="password" id="adminPwd" class="finput" placeholder="กรอกรหัสผ่าน"
-          onkeypress="if(event.key==='Enter') doLogin()" />
-      </div>
-      <div style="display:flex;gap:10px;justify-content:flex-end">
-        <button class="btn btn-outline btn-sm" onclick="closeModal('modalLogin')">ยกเลิก</button>
-        <button class="btn btn-primary btn-sm" onclick="doLogin()">เข้าสู่ระบบ</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════
-     MODAL: Admin Panel
-═══════════════════════════════════════════════ -->
-<div class="overlay hidden" id="modalAdmin">
-  <div class="modal modal-xl">
-    <div class="modal-head">
-      <span class="modal-head-title">🗂️ ข้อมูลการลงทะเบียนทั้งหมด — All Registrations</span>
-      <button class="modal-close" onclick="closeModal('modalAdmin')">✕</button>
-    </div>
-    <div class="modal-body">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px">
-        <div>
-          <span style="font-weight:700;font-size:1rem;color:var(--brand-white)">รายการทั้งหมด</span>
-          <span style="font-size:13px;color:var(--text-sub);margin-left:8px" id="regCount">0 รายการ</span>
-        </div>
-        <div style="display:flex;gap:8px">
-          <button class="btn btn-gold btn-sm" onclick="exportCSV()">📥 Export CSV</button>
-          <button class="btn btn-danger btn-sm" onclick="purgeAll()">🗑️ ลบทั้งหมด</button>
-        </div>
-      </div>
-      <div class="tbl-wrap">
-        <table class="admin-tbl" id="adminTbl">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>วันที่</th>
-              <th>ชื่อ-นามสกุล</th>
-              <th>เบอร์</th>
-              <th>อีเมล</th>
-              <th>ฟาร์ม</th>
-              <th>อาชีพ</th>
-              <th>พันธุ์</th>
-              <th>กระบวนการ</th>
-              <th>MASL</th>
-              <th>สถานะ</th>
-              <th>จัดการ</th>
-            </tr>
-          </thead>
-          <tbody id="adminTbody">
-            <tr><td colspan="12" style="text-align:center;padding:24px;color:var(--text-sub)">ยังไม่มีข้อมูลการลงทะเบียน</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════
-     MODAL: Coffee Process Info
-═══════════════════════════════════════════════ -->
 <div class="overlay hidden" id="coffeeProcessModal">
   <div class="modal modal-xl" style="max-width: 680px;">
     <div class="modal-head">
@@ -1336,23 +1101,17 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════
-     JAVASCRIPT
-═══════════════════════════════════════════════ -->
 <script>
-const ADMIN_HASH   = 'QDA0MTI5NEF0b20='; // @041294Atom
-const STORE_KEY    = 'coe_th_regs';
+// วางลิงก์ Google Apps Script Web App ของคุณที่ช่องด้านล่างนี้ครับ
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzZNBOM1w_B7VWIOB-k4iiNdHY-A6Ta4yqp7EIwISAByWqL5r3Za-OgOTQAu_vV7wlc/exec'; 
+
 const MAX_MB       = 10;
 const MAX_FARM_IMG = 3;
 
-/* ---- Runtime state ---- */
-let files_nid  = [];   // ID card
-let files_farm = [];   // Farm photos (max 3)
-let files_cert = [];   // Farm certificate
+let files_nid  = [];   
+let files_farm = [];   
+let files_cert = [];   
 
-/* ============================================================
-   INIT
-   ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
   stampTime();
   setupDragDrop('zone_nid',  'f_nid_file',    1,            files_nid,  'list_nid');
@@ -1362,43 +1121,11 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('regForm').addEventListener('input',  syncStatus);
   document.getElementById('regForm').addEventListener('change', syncStatus);
   syncStatus();
+  openCoffeeModal();
 });
 
-/* ============================================================
-   HOME CONSENT LOGIC (NEW)
-   ============================================================ */
-function toggleConsentButtons() {
-  const checkbox = document.getElementById('acceptRulesCheckbox');
-  const agreeBtn = document.getElementById('agreeBtn');
-  agreeBtn.disabled = !checkbox.checked;
-}
+function openCoffeeModal() { openModal('coffeeProcessModal'); }
 
-function acceptConsent() {
-  // สลับการแสดงผลหน้า Home กฎกติกา -> หน้าแบบฟอร์มลงทะเบียน
-  document.getElementById('homeRulesScreen').style.display = 'none';
-  document.getElementById('statusBar').style.display = 'flex';
-  document.getElementById('regForm').style.display = 'block';
-  
-  // เรียกเปิด Pop-up ข้อมูล Process กาแฟขึ้นมาตามสเต็ปเดิมคุณ
-  openCoffeeModal();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function rejectConsent() {
-  alert('คุณได้ปฏิเสธข้อตกลงและเงื่อนไข ระบบจะทำการรีเฟรชหน้าเว็บกลับสู่สภาวะเริ่มต้น');
-  location.reload(); // รีเฟรชหน้าเว็บกลับมาสเตตัสแรกสุด
-}
-
-/* ============================================================
-   COFFEE MODAL TRIGGERS
-   ============================================================ */
-function openCoffeeModal() {
-  openModal('coffeeProcessModal');
-}
-
-/* ============================================================
-   TIMESTAMP
-   ============================================================ */
 function stampTime() {
   const now  = new Date();
   const iso  = now.toISOString();
@@ -1409,14 +1136,12 @@ function stampTime() {
   });
   document.getElementById('f_ts').value   = iso;
   document.getElementById('tsDisplay').textContent = thai;
+  document.getElementById('f_regDateThai').value = thai;
   document.getElementById('statusTs').textContent  =
     '📅 ' + now.toLocaleDateString('th-TH', {day:'2-digit',month:'2-digit',year:'numeric',timeZone:'Asia/Bangkok'})
     + ' ' + now.toLocaleTimeString('th-TH', {hour:'2-digit',minute:'2-digit',timeZone:'Asia/Bangkok'});
 }
 
-/* ============================================================
-   CHARACTER COUNTER
-   ============================================================ */
 function countChars(el) {
   const cur  = el.value.length;
   const max  = 1300;
@@ -1429,9 +1154,6 @@ function countChars(el) {
   syncStatus();
 }
 
-/* ============================================================
-   CONDITIONAL FIELDS
-   ============================================================ */
 function togglePrevYear() {
   const shown = document.getElementById('f_prev').value === 'เคย';
   const g = document.getElementById('grp_prevYear');
@@ -1460,9 +1182,6 @@ function toggleReturnAddr() {
   syncStatus();
 }
 
-/* ============================================================
-   NATIONAL ID FORMATTER (X-XXXX-XXXXX-XX-X)
-   ============================================================ */
 function setupNidFormatter() {
   document.getElementById('f_nid').addEventListener('input', e => {
     let raw = e.target.value.replace(/\D/g, '').slice(0, 13);
@@ -1476,9 +1195,6 @@ function setupNidFormatter() {
   });
 }
 
-/* ============================================================
-   FILE UPLOAD
-   ============================================================ */
 function setupDragDrop(zoneId, inputId, maxFiles, store, listId) {
   const zone  = document.getElementById(zoneId);
   const input = document.getElementById(inputId);
@@ -1492,7 +1208,7 @@ function setupDragDrop(zoneId, inputId, maxFiles, store, listId) {
   });
   input.addEventListener('change', e => {
     ingestFiles(e.target.files, maxFiles, store, listId, inputId);
-    e.target.value = ''; // reset so same file can be re-added after removal
+    e.target.value = ''; 
   });
 }
 
@@ -1535,23 +1251,11 @@ function removeFile(listId, inputId, idx) {
   syncStatus();
 }
 
-/* ============================================================
-   VALIDATORS
-   ============================================================ */
-function valNid(v) {
-  const s = v.replace(/\D/g, '');
-  return s.length === 13;
-}
-function valEmail(v) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
-}
-function getVal(id) {
-  return (document.getElementById(id)?.value || '').trim();
-}
+function valNid(v) { return v.replace(/\D/g, '').length === 13; }
+function valEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+ Zor
+function getVal(id) { return (document.getElementById(id)?.value || '').trim(); }
 
-/* ============================================================
-   PROGRESS & STATUS SYNC
-   ============================================================ */
 function syncStatus() {
   const checks = [
     getVal('f_fn_th'), getVal('f_ln_th'), getVal('f_fn_en'), getVal('f_ln_en'),
@@ -1569,7 +1273,6 @@ function syncStatus() {
     document.querySelector('input[name="returnMethod"]:checked')   ? '1' : '',
   ];
 
-  // Conditional
   if (document.getElementById('f_prev').value === 'เคย') checks.push(getVal('f_prevYear'));
   const vv = document.getElementById('f_variety').value;
   if (vv === 'Mixed' || vv === 'Other') checks.push(getVal('f_varietyCustom'));
@@ -1587,19 +1290,13 @@ function syncStatus() {
   const pill  = document.getElementById('statusPill');
   const label = document.getElementById('statusLabel');
   pill.className = 'status-pill ' + (done ? 'checked' : 'unchecked');
-  label.textContent = done
-    ? '✅ Checked — ข้อมูลครบถ้วน'
-    : `❌ Unchecked — ยังขาดอีก ${total - filled} ช่อง`;
+  label.textContent = done ? '✅ Checked — ข้อมูลครบถ้วน' : `❌ Unchecked — ยังขาดอีก ${total - filled} ช่อง`;
 }
 
-/* ============================================================
-   FULL VALIDATION (on submit)
-   ============================================================ */
 function fullValidate() {
   let ok = true;
   const errs = [];
 
-  // Clear all
   document.querySelectorAll('.ferr').forEach(e => e.classList.remove('show'));
   document.querySelectorAll('.finput,.fselect,.ftextarea').forEach(e => e.classList.remove('is-err','is-ok'));
 
@@ -1619,7 +1316,6 @@ function fullValidate() {
     }
   }
 
-  // Personal
   chk('f_fn_th',  'e_fn_th',  null,       'ชื่อภาษาไทย');
   chk('f_ln_th',  'e_ln_th',  null,       'นามสกุลภาษาไทย');
   chk('f_fn_en',  'e_fn_en',  null,       'ชื่อภาษาอังกฤษ');
@@ -1629,25 +1325,18 @@ function fullValidate() {
   chk('f_line',   'e_line',   null,       'ไอดีไลน์');
   chk('f_email',  'e_email',  valEmail,   'อีเมล');
 
-  if (!files_nid.length) {
-    document.getElementById('e_nid_file').classList.add('show');
-    errs.push('สำเนาบัตรประชาชน'); ok = false;
-  }
+  if (!files_nid.length) { document.getElementById('e_nid_file').classList.add('show'); errs.push('สำเนาบัตรประชาชน'); ok = false; }
 
-  // Competition
   chk('f_occ',     'e_occ',     null, 'อาชีพหลัก');
   chk('f_amt',     'e_amt',     null, 'จำนวนกะลา');
   chk('f_prev',    'e_prev',    null, 'ประสบการณ์ CoE');
   chk('f_variety', 'e_variety', null, 'พันธุ์กาแฟ');
   chk('f_process', 'e_process', null, 'กระบวนการแปรรูป');
 
-  if (document.getElementById('f_prev').value === 'เคย')
-    chk('f_prevYear', 'e_prevYear', null, 'ปีที่เคยร่วม');
+  if (document.getElementById('f_prev').value === 'เคย') chk('f_prevYear', 'e_prevYear', null, 'ปีที่เคยร่วม');
   const vv = document.getElementById('f_variety').value;
-  if (vv === 'Mixed' || vv === 'Other')
-    chk('f_varietyCustom', 'e_varietyCustom', null, 'ชื่อพันธุ์');
+  if (vv === 'Mixed' || vv === 'Other') chk('f_varietyCustom', 'e_varietyCustom', null, 'ชื่อพันธุ์');
 
-  // Farm
   chk('f_farm_th', 'e_farm_th', null, 'ชื่อฟาร์มไทย');
   chk('f_farm_en', 'e_farm_en', null, 'ชื่อฟาร์มอังกฤษ');
   chk('f_no',   'e_no',   null, 'เลขที่');
@@ -1659,103 +1348,78 @@ function fullValidate() {
   chk('f_size', 'e_size', null, 'ขนาดฟาร์ม');
   chk('f_hist', 'e_hist', null, 'ประวัติฟาร์ม');
 
-  if (!files_farm.length) {
-    document.getElementById('e_farm_photos').classList.add('show');
-    errs.push('ภาพฟาร์ม'); ok = false;
-  }
+  if (!files_farm.length) { document.getElementById('e_farm_photos').classList.add('show'); errs.push('ภาพฟาร์ม'); ok = false; }
 
-  // Delivery
-  if (!document.querySelector('input[name="deliveryMethod"]:checked')) {
-    document.getElementById('e_del').classList.add('show');
-    errs.push('วิธีส่งกาแฟ'); ok = false;
-  }
-  if (!document.querySelector('input[name="returnMethod"]:checked')) {
-    document.getElementById('e_ret').classList.add('show');
-    errs.push('วิธีรับคืน'); ok = false;
-  }
+  if (!document.querySelector('input[name="deliveryMethod"]:checked')) { document.getElementById('e_del').classList.add('show'); errs.push('วิธีส่งกาแฟ'); ok = false; }
+  if (!document.querySelector('input[name="returnMethod"]:checked')) { document.getElementById('e_ret').classList.add('show'); errs.push('วิธีรับคืน'); ok = false; }
+  
   const retV = document.querySelector('input[name="returnMethod"]:checked')?.value;
   if (retV === 'ส่งคืน') chk('f_retAddr', 'e_retAddr', null, 'ที่อยู่ส่งคืน');
 
   if (!ok) {
     const first = document.querySelector('.is-err');
     if (first) first.scrollIntoView({ behavior:'smooth', block:'center' });
-    alert('⚠️ กรุณากรอกข้อมูลให้ครบถ้วน\n\nข้อมูลที่ยังขาด:\n• ' +
-      errs.slice(0, 10).join('\n• ') + (errs.length > 10 ? `\n...และอีก ${errs.length - 10} รายการ` : ''));
+    alert('⚠️ กรุณากรอกข้อมูลให้ครบถ้วน\n\nข้อมูลที่ยังขาด:\n• ' + errs.slice(0, 10).join('\n• ') + (errs.length > 10 ? `\n...และอีก ${errs.length - 10} รายการ` : ''));
   }
   return ok;
 }
 
-/* ============================================================
-   SUBMIT
-   ============================================================ */
 document.getElementById('regForm').addEventListener('submit', e => {
   e.preventDefault();
   if (!fullValidate()) return;
-  saveEntry();
+
+  const submitBtn = document.getElementById('submitBtn');
+  submitBtn.disabled = true;
+  submitBtn.textContent = '⏳ กำลังบันทึกข้อมูล...';
+
+  // เตรียมและคำนวณข้อมูลพิเศษก่อนส่งเข้า Hidden Inputs
+  document.getElementById('f_id').value = Date.now();
+  document.getElementById('f_nidFileName').value = files_nid.map(f => f.name).join('; ') || '—';
+  document.getElementById('f_farmPhotoFiles').value = files_farm.map(f => f.name).join('; ') || '—';
+  document.getElementById('f_certFileName').value = files_cert.map(f => f.name).join('; ') || '—';
+
+  const varietySelect = document.getElementById('f_variety').value;
+  if (varietySelect === 'Mixed' || varietySelect === 'Other') {
+    document.getElementById('f_variety_full').value = `${varietySelect} — ${getVal('f_varietyCustom')}`;
+  } else {
+    document.getElementById('f_variety_full').value = varietySelect;
+  }
+
+  // ใช้ FormData ดึงค่าทั้งหมดที่มี attribute "name" ส่งไปยัง Google Apps Script
+  const formEl = document.getElementById('regForm');
+  const formData = new FormData(formEl);
+
+  fetch(SCRIPT_URL, {
+    method: 'POST',
+    body: formData
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.result === 'success') {
+      showSuccess({
+        firstNameTh: getVal('f_fn_th'),
+        lastNameTh: getVal('f_ln_th'),
+        farmNameTh: getVal('f_farm_th'),
+        variety: document.getElementById('f_variety_full').value,
+        process: document.getElementById('f_process').value,
+        regDateThai: document.getElementById('f_regDateThai').value
+      });
+    } else {
+      alert('❌ เกิดข้อผิดพลาดจากเซิร์ฟเวอร์: ' + data.error);
+    }
+  })
+  .catch(err => {
+    console.error(err);
+    alert('❌ การส่งข้อมูลล้มเหลว กรุณาตรวจสอบการเชื่อมต่ออินเทอร์เน็ตของคุณ หรือ URL Web App');
+  })
+  .finally(() => {
+    submitBtn.disabled = false;
+    submitBtn.textContent = '☕ ยืนยันการสมัคร';
+  });
 });
 
-function saveEntry() {
-  const variety = document.getElementById('f_variety').value;
-  const vv = document.getElementById('f_variety').value;
-  const varietyFull = (vv === 'Mixed' || vv === 'Other')
-    ? `${variety} — ${getVal('f_varietyCustom')}`
-    : variety;
-
-  const retMethod = document.querySelector('input[name="returnMethod"]:checked')?.value || '';
-
-  const reg = {
-    id:              Date.now(),
-    regTimestamp:    document.getElementById('f_ts').value,
-    regDateThai:     document.getElementById('tsDisplay').textContent,
-    firstNameTh:     getVal('f_fn_th'),
-    lastNameTh:      getVal('f_ln_th'),
-    firstNameEn:     getVal('f_fn_en'),
-    lastNameEn:      getVal('f_ln_en'),
-    nationalId:      getVal('f_nid'),
-    nidFileName:     files_nid.map(f => f.name).join('; ') || '—',
-    phone:           getVal('f_phone'),
-    lineId:          getVal('f_line'),
-    email:           getVal('f_email'),
-    occupation:      document.getElementById('f_occ').options[document.getElementById('f_occ').selectedIndex]?.text || '',
-    previousCoE:     document.getElementById('f_prev').value,
-    previousCoEYear: document.getElementById('f_prev').value === 'เคย' ? getVal('f_prevYear') : '—',
-    variety:         varietyFull,
-    process:         document.getElementById('f_process').value,
-    coffeeAmount:    getVal('f_amt'),
-    farmNameTh:      getVal('f_farm_th'),
-    farmNameEn:      getVal('f_farm_en'),
-    addressNo:       getVal('f_no'),
-    addressMoo:      getVal('f_moo'),
-    addressRoad:     getVal('f_road'),
-    addressSub:      getVal('f_sub'),
-    addressDist:     getVal('f_dist'),
-    addressProv:     getVal('f_prov'),
-    addressPost:     getVal('f_post'),
-    masl:            getVal('f_masl'),
-    farmSize:        getVal('f_size'),
-    farmHistory:     getVal('f_hist'),
-    farmPhotoFiles:  files_farm.map(f => f.name).join('; ') || '—',
-    certFileName:    files_cert.map(f => f.name).join('; ') || '—',
-    deliveryMethod:  document.querySelector('input[name="deliveryMethod"]:checked')?.value || '',
-    returnMethod:    retMethod,
-    returnAddress:   retMethod === 'ส่งคืน' ? getVal('f_retAddr') : '—',
-    status:          'Checked'
-  };
-
-  const all = JSON.parse(localStorage.getItem(STORE_KEY) || '[]');
-  all.push(reg);
-  localStorage.setItem(STORE_KEY, JSON.stringify(all));
-
-  showSuccess(reg);
-}
-
-/* ============================================================
-   SUCCESS SCREEN
-   ============================================================ */
 function showSuccess(reg) {
-  document.getElementById('regForm').style.display    = 'none';
-  document.getElementById('adminFloat').style.display = 'none';
-  document.getElementById('statusBar').style.display  = 'none';
+  document.getElementById('regForm').style.display = 'none';
   const sc = document.getElementById('successScreen');
   sc.classList.add('show');
 
@@ -1772,16 +1436,11 @@ function showSuccess(reg) {
 
 function newEntry() {
   document.getElementById('successScreen').classList.remove('show');
-  document.getElementById('regForm').style.display    = 'block';
-  document.getElementById('adminFloat').style.display = 'block';
-  document.getElementById('statusBar').style.display  = 'flex';
+  document.getElementById('regForm').style.display = 'block';
   clearForm(true);
   window.scrollTo({ top:0, behavior:'smooth' });
 }
 
-/* ============================================================
-   CLEAR / RESET
-   ============================================================ */
 function clearForm(skipConfirm = false) {
   if (!skipConfirm && !confirm('ต้องการล้างข้อมูลทั้งหมดในแบบฟอร์มหรือไม่?')) return;
   document.getElementById('regForm').reset();
@@ -1804,138 +1463,6 @@ function clearForm(skipConfirm = false) {
   window.scrollTo({ top:0, behavior:'smooth' });
 }
 
-/* ============================================================
-   ADMIN LOGIN
-   ============================================================ */
-function openAdminLogin() {
-  document.getElementById('adminPwd').value = '';
-  document.getElementById('loginMsg').textContent = '';
-  document.getElementById('loginMsg').className = 'admin-msg';
-  openModal('modalLogin');
-}
-
-function doLogin() {
-  const pwd = document.getElementById('adminPwd').value;
-  if (btoa(pwd) === ADMIN_HASH) {
-    closeModal('modalLogin');
-    openAdminPanel();
-  } else {
-    const m = document.getElementById('loginMsg');
-    m.textContent = '❌ รหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง';
-    m.className = 'admin-msg err';
-    document.getElementById('adminPwd').value = '';
-  }
-}
-
-/* ============================================================
-   ADMIN PANEL
-   ============================================================ */
-function openAdminPanel() {
-  const all = JSON.parse(localStorage.getItem(STORE_KEY) || '[]');
-  document.getElementById('regCount').textContent = `${all.length} รายการ`;
-
-  const tbody = document.getElementById('adminTbody');
-  if (!all.length) {
-    tbody.innerHTML = '<tr><td colspan="12" style="text-align:center;padding:24px;color:var(--text-sub)">ยังไม่มีข้อมูลการลงทะเบียน</td></tr>';
-  } else {
-    tbody.innerHTML = all.map((r, i) => {
-      const d = new Date(r.regTimestamp);
-      const dt = d.toLocaleDateString('th-TH') + '<br><small style="color:var(--text-sub)">' + d.toLocaleTimeString('th-TH', {hour:'2-digit',minute:'2-digit'}) + '</small>';
-      return `<tr>
-        <td>${i + 1}</td>
-        <td>${dt}</td>
-        <td><strong>${r.firstNameTh} ${r.lastNameTh}</strong><br><small style="color:var(--text-sub)">${r.firstNameEn} ${r.lastNameEn}</small></td>
-        <td>${r.phone}</td>
-        <td style="max-width:140px">${r.email}</td>
-        <td>${r.farmNameTh}</td>
-        <td style="font-size:12px">${r.occupation}</td>
-        <td>${r.variety}</td>
-        <td>${r.process}</td>
-        <td>${r.masl}</td>
-        <td><span class="badge badge-ok">✅ ${r.status}</span></td>
-        <td><button class="btn btn-danger btn-sm" onclick="deleteReg(${r.id})">🗑️</button></td>
-      </tr>`;
-    }).join('');
-  }
-  openModal('modalAdmin');
-}
-
-function deleteReg(id) {
-  if (!confirm('ต้องการลบรายการนี้หรือไม่?')) return;
-  let all = JSON.parse(localStorage.getItem(STORE_KEY) || '[]');
-  all = all.filter(r => r.id !== id);
-  localStorage.setItem(STORE_KEY, JSON.stringify(all));
-  openAdminPanel();
-}
-
-function purgeAll() {
-  if (!confirm('⚠️ ลบข้อมูลการลงทะเบียนทั้งหมด?\n\nการกระทำนี้ไม่สามารถยกเลิกได้')) return;
-  if (!confirm('ยืนยันอีกครั้ง — ลบข้อมูลทั้งหมดถาวร?')) return;
-  localStorage.removeItem(STORE_KEY);
-  openAdminPanel();
-}
-
-/* ============================================================
-   CSV EXPORT
-   ============================================================ */
-function exportCSV() {
-  const all = JSON.parse(localStorage.getItem(STORE_KEY) || '[]');
-  if (!all.length) { alert('ไม่มีข้อมูลการลงทะเบียน'); return; }
-
-  const headers = [
-    'ลำดับ','วันที่ลงทะเบียน (ISO)','วันที่ลงทะเบียน (ไทย)',
-    'ชื่อ (ไทย)','นามสกุล (ไทย)','ชื่อ (อังกฤษ)','นามสกุล (อังกฤษ)',
-    'เลขบัตรประชาชน','ไฟล์สำเนาบัตร',
-    'เบอร์ติดต่อ','ไอดีไลน์','อีเมล',
-    'อาชีพหลัก','เคยร่วม CoE','ปีที่เคยร่วม',
-    'พันธุ์','กระบวนการแปรรูป','จำนวนกะลา',
-    'ชื่อฟาร์ม (ไทย)','ชื่อฟาร์ม (อังกฤษ)',
-    'เลขที่','หมู่','ถนน','ตำบล','อำเภอ','จังหวัด','รหัสไปรษณีย์',
-    'MASL','ขนาดฟาร์ม (ไร่)','ประวัติฟาร์ม',
-    'ไฟล์ภาพฟาร์ม','ไฟล์ใบรับรองฟาร์ม',
-    'วิธีส่งกาแฟ','วิธีรับกาแฟคืน','ที่อยู่ส่งคืน',
-    'สถานะ'
-  ];
-
-  const rows = all.map((r, i) => [
-    i + 1, r.regTimestamp, r.regDateThai,
-    r.firstNameTh, r.lastNameTh, r.firstNameEn, r.lastNameEn,
-    r.nationalId, r.nidFileName,
-    r.phone, r.lineId, r.email,
-    r.occupation, r.previousCoE, r.previousCoEYear,
-    r.variety, r.process, r.coffeeAmount,
-    r.farmNameTh, r.farmNameEn,
-    r.addressNo, r.addressMoo, r.addressRoad,
-    r.addressSub, r.addressDist, r.addressProv, r.addressPost,
-    r.masl, r.farmSize, r.farmHistory,
-    r.farmPhotoFiles, r.certFileName,
-    r.deliveryMethod, r.returnMethod, r.returnAddress,
-    r.status
-  ]);
-
-  const esc = v => {
-    const s = String(v ?? '').replace(/\n/g, ' ');
-    return (s.includes(',') || s.includes('"') || s.includes('\n'))
-      ? `"${s.replace(/"/g, '""')}"` : s;
-  };
-
-  const csv = '\uFEFF' + [headers, ...rows].map(row => row.map(esc).join(',')).join('\n');
-
-  const blob = new Blob([csv], { type:'text/csv;charset=utf-8;' });
-  const url  = URL.createObjectURL(blob);
-  const a    = document.createElement('a');
-  const date = new Date().toLocaleDateString('th-TH', {year:'numeric',month:'2-digit',day:'2-digit'}).replace(/\//g,'-');
-  a.href     = url;
-  a.download = `CoE_Thailand_Registrations_${date}.csv`;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-}
-
-/* ============================================================
-   MODAL HELPERS
-   ============================================================ */
 function openModal(id)  { document.getElementById(id).classList.remove('hidden'); }
 function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
 
