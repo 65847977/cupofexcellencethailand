@@ -10,27 +10,28 @@
 
   <style>
     /* =========================================================
-       DESIGN TOKENS — Exclusive Color Palette: Blue, Red, White, Black
+       DESIGN TOKENS — Dark Mode & Brand Colors
     ========================================================= */
     :root {
-      --bg-main:       #131314; /* ดำหลัก (Dark Mode) */
-      --bg-card:       #1e1e20; /* ดำเทาสำหรับกล่องข้อความ */
-      --bg-input:      #2a2a2c; /* ดำสว่างสำหรับ Input */
-      --border-color:  #3a3a3c; /* ขาวจางสำหรับเส้นขอบ */
+      --bg-main:       #131314; /* สีพื้นหลังหลัก (Dark Mode) */
+      --bg-card:       #1e1e20; /* สีพื้นหลังของกล่องข้อความ */
+      --bg-input:      #2a2a2c; /* สีพื้นหลังของ Input */
+      --border-color:  #3a3a3c; /* สีเส้นขอบ */
       
-      /* สีหลักตามที่กำหนด */
-      --brand-blue:    #24184C; /* น้ำเงินหลัก */
-      --brand-red:     #D72311; /* แดงหลัก */
-      --brand-white:   #ffffff; /* ขาวบริสุทธิ์ */
+      /* สีหลักตาม Theme ที่กำหนด */
+      --brand-blue:    #24184C; /* สีน้ำเงินหลัก */
+      --brand-red:     #D72311; /* สีแดงหลัก */
+      --brand-green:   #007A3E; /* สีเขียว */
+      --brand-yellow:  #F4D000; /* สีเหลือง */
       
       /* สีสำหรับสถานะและข้อความ */
-      --text-main:     #e3e3e3; /* ข้อความหลัก */
-      --text-sub:      #a1a1a5; /* ข้อความรอง */
-      --text-muted:    #757579; /* ข้อความจาง */
+      --text-main:     #e3e3e3; /* สีข้อความหลัก */
+      --text-sub:      #a1a1a5; /* สีข้อความรอง */
+      --text-muted:    #757579; /* สีข้อความจางๆ */
       
-      --white-bg:      rgba(255, 255, 255, 0.1);
-      --blue-bg:       rgba(36, 24, 76, 0.25);
+      --green-bg:      rgba(0, 122, 62, 0.15);
       --red-bg:        rgba(215, 35, 17, 0.15);
+      --yellow-bg:     rgba(244, 208, 0, 0.15);
       
       --shadow-s:    0 1px 4px rgba(0,0,0,.3);
       --shadow-m:    0 4px 16px rgba(0,0,0,.4);
@@ -59,7 +60,7 @@
     ========================================================= */
     .site-header {
       background: linear-gradient(135deg, #120b29 0%, var(--brand-blue) 60%, #3a1e54 100%);
-      color: var(--brand-white);
+      color: #fff;
       padding: 48px 24px 40px;
       text-align: center;
       position: relative;
@@ -67,14 +68,14 @@
       border-bottom: 2px solid var(--brand-red);
     }
 
-    /* Watermark styled cleanly with white opacity */
+    /* Coffee ring watermark styled to match brand colors */
     .site-header::before {
       content: '';
       position: absolute;
       right: -60px; top: -60px;
       width: 280px; height: 280px;
       border-radius: 50%;
-      border: 32px solid rgba(255, 255, 255, 0.02);
+      border: 32px solid rgba(244, 208, 0, 0.04);
       pointer-events: none;
     }
     .site-header::after {
@@ -83,13 +84,13 @@
       right: 20px; top: 20px;
       width: 180px; height: 180px;
       border-radius: 50%;
-      border: 18px solid rgba(255, 255, 255, 0.01);
+      border: 18px solid rgba(215, 35, 17, 0.04);
       pointer-events: none;
     }
 
     .header-eyebrow {
       display: inline-block;
-      background: var(--brand-white);
+      background: var(--brand-yellow);
       color: #000;
       font-size: 10.5px;
       font-weight: 800;
@@ -104,21 +105,19 @@
       font-family: 'Playfair Display', serif;
       font-size: clamp(2.2rem, 6vw, 3.4rem);
       font-weight: 700;
-      color: var(--brand-white);
+      color: #fff;
       line-height: 1.1;
       letter-spacing: -0.5px;
     }
 
     .header-title em {
       font-style: normal;
-      color: var(--brand-white);
-      text-decoration: underline;
-      text-decoration-color: var(--brand-red);
+      color: var(--brand-yellow);
     }
 
     .header-divider {
       width: 48px; height: 3px;
-      background: linear-gradient(90deg, var(--brand-red), var(--brand-white));
+      background: linear-gradient(90deg, var(--brand-red), var(--brand-yellow));
       border-radius: 2px;
       margin: 16px auto;
     }
@@ -157,7 +156,7 @@
       white-space: nowrap;
       transition: background .3s, color .3s;
     }
-    .status-pill.checked   { background: var(--white-bg); color: var(--brand-white); border: 1px solid var(--border-color); }
+    .status-pill.checked   { background: var(--green-bg); color: #00ff80; }
     .status-pill.unchecked { background: var(--red-bg); color: #ff5252; }
 
     .status-dot {
@@ -166,7 +165,7 @@
       flex-shrink: 0;
       animation: blink 2s ease-in-out infinite;
     }
-    .checked   .status-dot { background: var(--brand-white); }
+    .checked   .status-dot { background: #00ff80; }
     .unchecked .status-dot { background: #ff5252; }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.4} }
 
@@ -182,7 +181,7 @@
     }
     .progress-fill {
       height: 100%;
-      background: linear-gradient(90deg, var(--brand-red), var(--brand-white));
+      background: linear-gradient(90deg, var(--brand-blue), var(--brand-yellow));
       border-radius: 3px;
       transition: width .5s cubic-bezier(.4,0,.2,1);
       width: 0%;
@@ -237,14 +236,14 @@
       background: rgba(255,255,255,.1);
       border: 1.5px solid rgba(255,255,255,.2);
       display: flex; align-items: center; justify-content: center;
-      font-size: 13px; font-weight: 700; color: var(--brand-white);
+      font-size: 13px; font-weight: 700; color: var(--brand-yellow);
       flex-shrink: 0;
     }
 
     .card-title {
       font-size: 15px;
       font-weight: 700;
-      color: var(--brand-white);
+      color: #fff;
       letter-spacing: .2px;
     }
 
@@ -285,11 +284,11 @@
       outline: none;
     }
     .finput:focus, .fselect:focus, .ftextarea:focus {
-      border-color: var(--brand-white);
-      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+      border-color: var(--brand-yellow);
+      box-shadow: 0 0 0 3px rgba(244, 208, 0, 0.15);
     }
     .finput.is-err, .fselect.is-err, .ftextarea.is-err { border-color: var(--brand-red); }
-    .finput.is-ok,  .fselect.is-ok,  .ftextarea.is-ok  { border-color: var(--brand-white); }
+    .finput.is-ok,  .fselect.is-ok,  .ftextarea.is-ok  { border-color: #00ff80; }
 
     .ftextarea { resize: vertical; min-height: 130px; }
     .fhint { font-size: 12px; color: var(--text-sub); }
@@ -327,7 +326,7 @@
     .sub-head {
       font-size: 13px;
       font-weight: 700;
-      color: var(--brand-white);
+      color: var(--brand-yellow);
       padding-bottom: 10px;
       border-bottom: 1.5px solid var(--border-color);
       margin-bottom: 16px;
@@ -343,9 +342,9 @@
       text-align: right;
       font-weight: 500;
     }
-    .char-counter.warn   { color: var(--brand-white); }
+    .char-counter.warn   { color: var(--brand-yellow); }
     .char-counter.over   { color: var(--brand-red); font-weight: 700; }
-    #charCurrentCount    { font-weight: 700; color: var(--brand-white); }
+    #charCurrentCount    { font-weight: 700; color: #fff; }
 
     /* =========================================================
        FILE UPLOAD
@@ -361,8 +360,8 @@
       transition: border-color .2s, background .2s;
     }
     .upload-zone:hover, .upload-zone.drag-over {
-      border-color: var(--brand-white);
-      background: rgba(255, 255, 255, 0.02);
+      border-color: var(--brand-yellow);
+      background: rgba(244, 208, 0, 0.04);
     }
     .upload-zone input[type="file"] {
       position: absolute; inset: 0;
@@ -409,17 +408,17 @@
       transition: border-color .2s, background .2s;
     }
     .radio-opt:has(input:checked) {
-      border-color: var(--brand-white);
-      background: var(--blue-bg);
+      border-color: var(--brand-blue);
+      background: rgba(36, 24, 76, 0.25);
     }
     .radio-opt input[type="radio"] {
       margin-top: 2px;
       flex-shrink: 0;
       width: 16px; height: 16px;
-      accent-color: var(--brand-white);
+      accent-color: var(--brand-yellow);
       cursor: pointer;
     }
-    .radio-opt-title  { font-weight: 700; font-size: 14px; color: var(--brand-white); margin-bottom: 3px; }
+    .radio-opt-title  { font-weight: 700; font-size: 14px; color: #fff; margin-bottom: 3px; }
     .radio-opt-detail { font-size: 12.5px; color: var(--text-sub); line-height: 1.5; }
 
     /* Warning text */
@@ -437,8 +436,8 @@
 
     /* Info box */
     .info-box {
-      background: var(--blue-bg);
-      border-left: 3px solid var(--brand-white);
+      background: var(--yellow-bg);
+      border-left: 3px solid var(--brand-yellow);
       border-radius: 6px;
       padding: 10px 14px;
       font-size: 13px;
@@ -464,7 +463,7 @@
 
     .btn-primary {
       background: linear-gradient(135deg, var(--brand-blue), #38247a);
-      color: var(--brand-white);
+      color: #fff;
       box-shadow: 0 4px 14px rgba(36, 24, 76, 0.4);
     }
     .btn-primary:hover { box-shadow: 0 6px 20px rgba(36, 24, 76, 0.6); transform: translateY(-1px); }
@@ -477,13 +476,13 @@
     .btn-outline:hover { background: rgba(255,255,255,.05); border-color: var(--text-sub); }
 
     .btn-gold {
-      background: linear-gradient(135deg, #444, var(--brand-white));
+      background: linear-gradient(135deg, #b09702, var(--brand-yellow));
       color: #000;
-      box-shadow: 0 4px 14px rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 14px rgba(244, 208, 0, 0.2);
     }
-    .btn-gold:hover { box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2); transform: translateY(-1px); }
+    .btn-gold:hover { box-shadow: 0 6px 20px rgba(244, 208, 0, 0.4); transform: translateY(-1px); }
 
-    .btn-danger { background: var(--brand-red); color: var(--brand-white); }
+    .btn-danger { background: var(--brand-red); color: #fff; }
     .btn-sm { padding: 7px 16px; font-size: 13px; border-radius: 7px; }
 
     .form-actions {
@@ -515,7 +514,7 @@
       transition: color .2s, background .2s;
       display: flex; align-items: center; gap: 6px;
     }
-    .admin-float-btn:hover { color: var(--brand-white); background: var(--bg-input); }
+    .admin-float-btn:hover { color: #fff; background: var(--bg-input); }
 
     /* =========================================================
        MODALS
@@ -547,7 +546,7 @@
 
     .modal-head {
       background: linear-gradient(135deg, #120b29, var(--brand-blue));
-      color: var(--brand-white);
+      color: #fff;
       padding: 18px 22px;
       display: flex; align-items: center; justify-content: space-between;
       border-bottom: 1px solid var(--border-color);
@@ -601,7 +600,7 @@
     .admin-tbl tr:hover td { background: rgba(255,255,255,0.02); }
 
     .badge { padding: 2px 9px; border-radius: 12px; font-size: 11.5px; font-weight: 700; }
-    .badge-ok  { background: var(--white-bg); color: var(--brand-white); border: 1px solid var(--border-color); }
+    .badge-ok  { background: var(--green-bg); color: #00ff80; }
     .badge-err { background: var(--red-bg); color: #ff5252; }
 
     /* =========================================================
@@ -615,12 +614,12 @@
       padding: 60px 20px;
     }
     .success-icon  { font-size: 72px; margin-bottom: 18px; }
-    .success-title { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--brand-white); margin-bottom: 6px; }
+    .success-title { font-family: 'Playfair Display', serif; font-size: 2rem; color: #00ff80; margin-bottom: 6px; }
     .success-sub   { font-size: 1rem; color: var(--text-sub); margin-bottom: 28px; }
 
     .success-card {
-      background: var(--blue-bg);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: var(--green-bg);
+      border: 1px solid rgba(0, 122, 62, 0.3);
       border-radius: var(--radius);
       padding: 18px 22px;
       max-width: 420px;
@@ -628,13 +627,13 @@
       text-align: left;
       font-size: 14px;
     }
-    .success-card-title { font-weight: 700; color: var(--brand-white); font-size: 15px; margin-bottom: 10px; }
+    .success-card-title { font-weight: 700; color: #00ff80; font-size: 15px; margin-bottom: 10px; }
     .success-row { display: flex; gap: 8px; margin-bottom: 5px; }
     .success-key { color: var(--text-muted); flex-shrink: 0; }
     .success-val { font-weight: 600; color: var(--text-main); }
 
     /* =========================================================
-       COFFEE PROCESS INFO POP-UP
+       COFFEE PROCESS INFO POP-UP (ADDED EFFECT)
     ========================================================= */
     .coffee-table {
       width: 100%;
@@ -650,7 +649,7 @@
     }
     .coffee-table th {
       background-color: var(--bg-input);
-      color: var(--brand-white);
+      color: var(--brand-yellow);
       font-weight: 700;
     }
     .coffee-table tr:hover {
@@ -658,11 +657,11 @@
     }
     .process-type {
       font-weight: 700;
-      color: var(--brand-white);
+      color: var(--brand-yellow);
     }
     .understand-btn {
       background: linear-gradient(135deg, var(--brand-blue), #38247a);
-      color: var(--brand-white);
+      color: white;
       border: none;
       padding: 10px 24px;
       font-size: 14.5px;
@@ -681,7 +680,7 @@
     .info-trigger-btn {
       background: none;
       border: none;
-      color: var(--brand-white);
+      color: var(--brand-yellow);
       font-size: 12px;
       font-weight: 700;
       cursor: pointer;
@@ -689,7 +688,7 @@
       margin-left: 8px;
     }
     .info-trigger-btn:hover {
-      color: var(--brand-red);
+      color: #fff;
     }
 
     /* =========================================================
@@ -708,9 +707,6 @@
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════
-     HEADER
-═══════════════════════════════════════════════ -->
 <header class="site-header">
   <div class="header-eyebrow">Official Registration Form 2025</div>
   <h1 class="header-title">Cup of <em>Excellence</em></h1>
@@ -719,9 +715,6 @@
   <p class="header-sub">แบบฟอร์มลงทะเบียนส่งกาแฟเข้าร่วมการประกวด ☕ Coffee Competition Entry Form</p>
 </header>
 
-<!-- ═══════════════════════════════════════════════
-     STATUS BAR
-═══════════════════════════════════════════════ -->
 <div class="status-bar" id="statusBar">
   <div class="status-pill unchecked" id="statusPill">
     <span class="status-dot"></span>
@@ -736,15 +729,10 @@
   <div class="status-timestamp" id="statusTs">📅 —</div>
 </div>
 
-<!-- ═══════════════════════════════════════════════
-     MAIN
-═══════════════════════════════════════════════ -->
 <div class="main-wrap">
 
-  <!-- ─── FORM ─── -->
   <form id="regForm" novalidate>
 
-    <!-- ══════════ SECTION 1: ข้อมูลส่วนตัว ══════════ -->
     <div class="card">
       <div class="card-head">
         <div class="card-num">1</div>
@@ -752,7 +740,6 @@
       </div>
       <div class="card-body">
 
-        <!-- Timestamp -->
         <div class="fgroup" style="margin-bottom:18px">
           <label class="flabel">📅 วันและเวลาที่ลงทะเบียน <span style="font-weight:400;font-size:12px;color:var(--text-sub)">(บันทึกโดยระบบอัตโนมัติ)</span></label>
           <div class="ts-display"><span class="ts-icon">🕐</span><span id="tsDisplay">กำลังบันทึก...</span></div>
@@ -830,7 +817,6 @@
       </div>
     </div>
 
-    <!-- ══════════ SECTION 2: ข้อมูลการประกวด ══════════ -->
     <div class="card">
       <div class="card-head">
         <div class="card-num">2</div>
@@ -868,7 +854,6 @@
             </select>
             <span class="ferr" id="e_prev">กรุณาเลือก</span>
           </div>
-          <!-- Conditional: show only if "เคย" -->
           <div class="fgroup" id="grp_prevYear" style="display:none">
             <label class="flabel" for="f_prevYear">ระบุปีที่เคยเข้าร่วมการประกวด <span class="req">*</span></label>
             <input type="text" id="f_prevYear" class="finput" placeholder="เช่น 2023, 2024 หรือ 2566, 2567" />
@@ -911,7 +896,6 @@
           </div>
         </div>
 
-        <!-- Conditional: Mixed / Other variety detail -->
         <div id="grp_varietyCustom" style="display:none; margin-top:14px">
           <div class="fgroup">
             <label class="flabel" for="f_varietyCustom">กรุณาระบุพันธุ์กาแฟ <span class="req">*</span></label>
@@ -923,7 +907,6 @@
       </div>
     </div>
 
-    <!-- ══════════ SECTION 3: ข้อมูลฟาร์ม ══════════ -->
     <div class="card">
       <div class="card-head">
         <div class="card-num">3</div>
@@ -1045,7 +1028,6 @@
       </div>
     </div>
 
-    <!-- ══════════ SECTION 4: การส่งและรับคืนกาแฟ ══════════ -->
     <div class="card">
       <div class="card-head">
         <div class="card-num">4</div>
@@ -1106,7 +1088,6 @@
           <span class="ferr" id="e_ret">กรุณาเลือกวิธีการรับกาแฟคืน</span>
         </div>
 
-        <!-- Conditional: shipping return address -->
         <div id="grp_retAddr" style="display:none; margin-top:14px">
           <div class="fgroup">
             <label class="flabel" for="f_retAddr">ที่อยู่สำหรับส่งคืนกาแฟ <span class="req">*</span></label>
@@ -1119,7 +1100,6 @@
       </div>
     </div>
 
-    <!-- ══════════ SUBMIT ══════════ -->
     <div class="form-actions">
       <button type="button" class="btn btn-outline" onclick="clearForm()">🔄 ล้างข้อมูล</button>
       <button type="submit" class="btn btn-primary">☕ ยืนยันการสมัคร</button>
@@ -1127,7 +1107,6 @@
 
   </form>
 
-  <!-- ─── SUCCESS SCREEN ─── -->
   <div id="successScreen">
     <div class="success-wrap">
       <div class="success-icon">☕</div>
@@ -1138,16 +1117,10 @@
     </div>
   </div>
 
-</div><!-- /.main-wrap -->
-
-<!-- ─── ADMIN FLOAT ─── -->
-<div class="admin-float" id="adminFloat">
+</div><div class="admin-float" id="adminFloat">
   <button class="admin-float-btn" onclick="openAdminLogin()">🔐 Admin</button>
 </div>
 
-<!-- ═══════════════════════════════════════════════
-     MODAL: Admin Login
-═══════════════════════════════════════════════ -->
 <div class="overlay hidden" id="modalLogin">
   <div class="modal">
     <div class="modal-head">
@@ -1169,9 +1142,6 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════
-     MODAL: Admin Panel
-═══════════════════════════════════════════════ -->
 <div class="overlay hidden" id="modalAdmin">
   <div class="modal modal-xl">
     <div class="modal-head">
@@ -1181,7 +1151,7 @@
     <div class="modal-body">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px">
         <div>
-          <span style="font-weight:700;font-size:1rem;color:var(--brand-white)">รายการทั้งหมด</span>
+          <span style="font-weight:700;font-size:1rem;color:#fff">รายการทั้งหมด</span>
           <span style="font-size:13px;color:var(--text-sub);margin-left:8px" id="regCount">0 รายการ</span>
         </div>
         <div style="display:flex;gap:8px">
@@ -1216,9 +1186,6 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════
-     MODAL: Coffee Process Info
-═══════════════════════════════════════════════ -->
 <div class="overlay hidden" id="coffeeProcessModal">
   <div class="modal modal-xl" style="max-width: 680px;">
     <div class="modal-head">
@@ -1267,14 +1234,8 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════
-     JAVASCRIPT
-═══════════════════════════════════════════════ -->
 <script>
-/* ============================================================
-   ADMIN_HASH ได้รับการแก้ไขเป็นรหัสผ่านใหม่: @041294Atom
-   ============================================================ */
-const ADMIN_HASH   = 'QDA0MTI5NEF0b20='; 
+const ADMIN_HASH   = 'Q29FQFRoYWlsYW5kMjAyNQ=='; // CoE@Thailand2025
 const STORE_KEY    = 'coe_th_regs';
 const MAX_MB       = 10;
 const MAX_FARM_IMG = 3;
@@ -1355,9 +1316,6 @@ function togglePrevYear() {
   syncStatus();
 }
 
-/* ============================================================
-   BUSINESS LOGIC ARCHITECTURE
-   ============================================================ */
 function toggleVarietyCustom() {
   const v = document.getElementById('f_variety').value;
   const shown = v === 'Mixed' || v === 'Other';
@@ -1684,6 +1642,9 @@ function showSuccess(reg) {
   sc.scrollIntoView({ behavior:'smooth', block:'start' });
 }
 
+/* ============================================================
+   ADMIN ACTIONS & CONTEXT
+   ============================================================ */
 function newEntry() {
   document.getElementById('successScreen').classList.remove('show');
   document.getElementById('regForm').style.display    = 'block';
